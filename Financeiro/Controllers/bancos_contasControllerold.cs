@@ -12,15 +12,18 @@ using Financeiro.Models;
 
 namespace Financeiro.Controllers
 {
-    public class bancos_contasController : Controller
+    public class bancos_contasControllerold : Controller
     {
         private Contexto db = new Contexto();
 
         // GET: bancos_contas
         public async Task<ActionResult> Index()
         {
+
             var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta);
-            return View(await bancos_contas.ToListAsync());
+            var bc = bancos_contas.Where(b => b.apagado == "N");
+
+            return View(await bc.ToListAsync());
         }
 
         // GET: bancos_contas/Details/5
@@ -35,15 +38,14 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return View(bancos_contas);
+            return PartialView(bancos_contas);
         }
 
         // GET: bancos_contas/Create
         public ActionResult Create()
         {
             ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao");
-            ViewBag.idtp_conta = new SelectList(db.tp_conta, "idtp_conta", "descricao");
-            return View();
+            return PartialView();
         }
 
         // POST: bancos_contas/Create
@@ -51,7 +53,7 @@ namespace Financeiro.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "bancos_contas_id,descricao,bancos_id,idtp_conta,conta,agencia,saldo,nib,swift,iban,obs,apagado,dtcadastro,cad_usuario_id,dtalteracao,alt_usuario_id,apag_usuario_id,status")] bancos_contas bancos_contas)
+        public async Task<ActionResult> Create([Bind(Include = "bancos_contas_id,descricao,bancos_id,conta,agencia,saldo,nib,swift,iban,obs")] bancos_contas bancos_contas)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +63,6 @@ namespace Financeiro.Controllers
             }
 
             ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao", bancos_contas.bancos_id);
-            ViewBag.idtp_conta = new SelectList(db.tp_conta, "idtp_conta", "descricao", bancos_contas.idtp_conta);
             return View(bancos_contas);
         }
 
@@ -78,7 +79,6 @@ namespace Financeiro.Controllers
                 return HttpNotFound();
             }
             ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao", bancos_contas.bancos_id);
-            ViewBag.idtp_conta = new SelectList(db.tp_conta, "idtp_conta", "descricao", bancos_contas.idtp_conta);
             return View(bancos_contas);
         }
 
@@ -87,7 +87,7 @@ namespace Financeiro.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "bancos_contas_id,descricao,bancos_id,idtp_conta,conta,agencia,saldo,nib,swift,iban,obs,apagado,dtcadastro,cad_usuario_id,dtalteracao,alt_usuario_id,apag_usuario_id,status")] bancos_contas bancos_contas)
+        public async Task<ActionResult> Edit([Bind(Include = "bancos_contas_id,descricao,bancos_id,conta,agencia,saldo,nib,swift,iban,obs")] bancos_contas bancos_contas)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,6 @@ namespace Financeiro.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao", bancos_contas.bancos_id);
-            ViewBag.idtp_conta = new SelectList(db.tp_conta, "idtp_conta", "descricao", bancos_contas.idtp_conta);
             return View(bancos_contas);
         }
 

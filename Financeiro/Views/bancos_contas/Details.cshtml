@@ -1,11 +1,13 @@
 ﻿@model Financeiro.Models.bancos_contas
 
 <div>
-    <h6 >Detalhes da conta <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
-    <span aria-hidden="true">&times;</span></button>
-</h6>
+    <h6>
+        Detalhes da conta <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h6>
 
-    <hr class="corpadrao"/>
+    <hr class="corpadrao" />
     <div style="font-size:small">
         <div class="">
             <b>@Html.DisplayNameFor(model => model.descricao):</b>
@@ -14,7 +16,7 @@
         <div class="">
             <b>@Html.DisplayNameFor(model => model.bancos.descricao):</b>
             @Html.DisplayFor(model => model.bancos.descricao)
-           
+
         </div>
         <div>
             <b>@Html.DisplayNameFor(model => model.tp_conta.descricao):</b>
@@ -41,140 +43,8 @@
             @Html.DisplayFor(model => model.saldo)
         </div>
     </div>
-    <!--
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.bancos.descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.bancos.descricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.descricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.conta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.conta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.agencia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.agencia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.saldo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.saldo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.nib)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nib)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.swift)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.swift)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.iban)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.iban)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.obs)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.obs)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apagado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apagado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dtcadastro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dtcadastro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cad_usuario_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cad_usuario_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dtalteracao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dtalteracao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.alt_usuario_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.alt_usuario_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apag_usuario_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apag_usuario_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
-
-    </dl>
-        -->
 </div>
-<hr class="corpadrao"/>
-<div  align="right" >
-        <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="oi oi-pencil"></span></a>
+<hr class="corpadrao" />
+<div align="right">
+    <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="oi oi-pencil"></span></a>
 </div>

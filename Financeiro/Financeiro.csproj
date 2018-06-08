@@ -165,6 +165,7 @@
     <Compile Include="Conexao\Contexto.cs" />
     <Compile Include="Controllers\bancosController.cs" />
     <Compile Include="Controllers\bancos_contasController.cs" />
+    <Compile Include="Controllers\bancos_contasControllerold.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\tp_contaController.cs" />
     <Compile Include="Global.asax.cs">
