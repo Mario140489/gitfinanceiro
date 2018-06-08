@@ -1,0 +1,41 @@
+﻿@model Financeiro.Models.bancos_contas
+@{
+    ViewBag.Title = "Contas";
+}
+
+<h3>Contas</h3>
+<hr />
+<p>
+    <a class="btn btn-success btn-sm" href="@Url.Action("Create")"><span class="oi oi-plus" style="font-size:small"></span> Nova conta</a>
+    <a href="#" class="btn btn-success btn-sm " id="btnnovo" data-toggle="tooltip" data-placement="top" title="Nova conta">
+        <span class="oi oi-plus"></span>
+
+    </a>
+</p>
+@Html.Partial("_Index")
+@Html.Partial("Details", mo)
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".btndetalhes").click(function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos_contas/Details/" + id,
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+            $("#btnnovo").click(function () {
+                $("#teste").load("/bancos_contas/__Create/",
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+        });
+    </script>
+}

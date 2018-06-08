@@ -1,0 +1,42 @@
+﻿@model Financeiro.Models.tp_conta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tp_conta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fundos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fundos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.investimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.investimento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idtp_conta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
