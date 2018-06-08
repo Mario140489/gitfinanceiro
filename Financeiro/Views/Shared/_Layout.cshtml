@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Financeiro</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark  corpadrao corfonte_banco fixed-top">
+        <a class="navbar-brand">Financeiro</a>
+        <button class="navbar-toggler navbar-dark " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("About","Home")">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Contact","Home")">Contatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="@Url.Action("Index","bancos_contas")">Contas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Nome do aplicativo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+    <p>
+
+    </p>
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

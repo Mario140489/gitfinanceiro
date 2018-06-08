@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Financeiro.Models.tp_conta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fundos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.investimento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fundos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.investimento)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idtp_conta }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idtp_conta }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idtp_conta })
+        </td>
+    </tr>
+}
+
+</table>
