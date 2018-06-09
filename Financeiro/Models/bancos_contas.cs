@@ -16,13 +16,7 @@ namespace Financeiro.Models
         [StringLength(100,MinimumLength =10,ErrorMessage = "Descrição deve conter mínimo de 10 e máximo 100 caracteres!")]
         [Required(ErrorMessage = "Campo obrigatório!")]
         public string descricao { get; set; }
-        [Required(ErrorMessage = "Campo obrigatório!")]
-        [ForeignKey("bancos")]
-        public string bancos_id { get; set; }
-        public virtual bancos bancos { get; set; }
-        [ForeignKey("tp_conta")]
-        public int idtp_conta { get; set; }
-        public virtual tp_conta tp_conta { get; set; }
+
         [Required(ErrorMessage = "Campo obrigatório!")]
         [Display(Name = "Conta")]
         [StringLength(100, MinimumLength = 10, ErrorMessage = "Descrição deve conter mínimo de 1 e máximo 20 caracteres!")]
@@ -50,6 +44,9 @@ namespace Financeiro.Models
         public int? alt_usuario_id { get; set; }
         public int? apag_usuario_id { get; set; }
         public string status { get; set; }
- 
+        public int bancos_id { get; set; }
+        public virtual bancos bancos { get; set; }
+        public int idtp_conta { get; set; }
+        public virtual tp_conta tp_conta { get; set; }
     }
 }

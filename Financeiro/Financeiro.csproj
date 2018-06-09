@@ -312,24 +312,29 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\bancos_contas\__Create.cshtml" />
-    <Content Include="Views\bancos_contas\Delete.cshtml" />
-    <Content Include="Views\bancos_contas\Edit.cshtml" />
-    <Content Include="Views\bancos_contas\Index.cshtml" />
-    <Content Include="Views\bancos_contas\Create.cshtml" />
-    <Content Include="Views\bancos_contas\_Index.cshtml" />
-    <Content Include="Views\bancos_contas\Detailsold.cshtml" />
+    <Content Include="Views\bancos_contas.old\__Create.cshtml" />
+    <Content Include="Views\bancos_contas.old\Delete.cshtml" />
+    <Content Include="Views\bancos_contas.old\Edit.cshtml" />
+    <Content Include="Views\bancos_contas.old\Index.cshtml" />
+    <Content Include="Views\bancos_contas.old\Create.cshtml" />
+    <Content Include="Views\bancos_contas.old\_Index.cshtml" />
+    <Content Include="Views\bancos_contas.old\Detailsold.cshtml" />
     <Content Include="Views\bancos\Create.cshtml" />
     <Content Include="Views\bancos\Delete.cshtml" />
     <Content Include="Views\bancos\Details.cshtml" />
     <Content Include="Views\bancos\Edit.cshtml" />
     <Content Include="Views\bancos\Index.cshtml" />
-    <Content Include="Views\bancos_contas\Details.cshtml" />
+    <Content Include="Views\bancos_contas.old\Details.cshtml" />
     <Content Include="Views\tp_conta\Create.cshtml" />
     <Content Include="Views\tp_conta\Delete.cshtml" />
     <Content Include="Views\tp_conta\Details.cshtml" />
     <Content Include="Views\tp_conta\Edit.cshtml" />
     <Content Include="Views\tp_conta\Index.cshtml" />
+    <Content Include="Views\bancos_contas\Create.cshtml" />
+    <Content Include="Views\bancos_contas\Delete.cshtml" />
+    <Content Include="Views\bancos_contas\Details.cshtml" />
+    <Content Include="Views\bancos_contas\Edit.cshtml" />
+    <Content Include="Views\bancos_contas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

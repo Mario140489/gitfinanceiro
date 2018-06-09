@@ -9,7 +9,7 @@ namespace Financeiro.Models
     public class bancos
     {
         [Key]
-        public string bancos_id { get; set; }
+        public int bancos_id { get; set; }
         [Display(Name ="Banco")]
         public string descricao { get; set; }
     }

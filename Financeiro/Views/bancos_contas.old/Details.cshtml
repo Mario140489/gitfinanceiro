@@ -1,0 +1,50 @@
+﻿@model Financeiro.Models.bancos_contas
+
+<div>
+    <h6>
+        Detalhes da conta <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h6>
+
+    <hr class="corpadrao" />
+    <div style="font-size:small">
+        <div class="">
+            <b>@Html.DisplayNameFor(model => model.descricao):</b>
+            @Html.DisplayFor(model => model.descricao)
+        </div>
+        <div class="">
+            <b>@Html.DisplayNameFor(model => model.bancos.descricao):</b>
+            @Html.DisplayFor(model => model.bancos.descricao)
+
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.tp_conta.descricao):</b>
+            @Html.DisplayFor(model => model.tp_conta.descricao)
+            <b>@Html.DisplayNameFor(model => model.agencia):</b>
+            @Html.DisplayFor(model => model.agencia)
+            <b> @Html.DisplayNameFor(model => model.conta):</b>
+            @Html.DisplayFor(model => model.conta)
+        </div>
+        <div class="">
+            <b>@Html.DisplayNameFor(model => model.nib):</b>
+            @Html.DisplayFor(model => model.nib)
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.iban):</b>
+            @Html.DisplayFor(model => model.iban)
+        </div>
+        <div>
+            <b> @Html.DisplayNameFor(model => model.swift):</b>
+            @Html.DisplayFor(model => model.swift)
+        </div>
+        <div style="text-align:right">
+            <b> @Html.DisplayNameFor(model => model.saldo):</b>
+            @Html.DisplayFor(model => model.saldo)
+        </div>
+    </div>
+</div>
+<hr class="corpadrao" />
+<div align="right">
+    <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="oi oi-pencil"></span></a>
+</div>
