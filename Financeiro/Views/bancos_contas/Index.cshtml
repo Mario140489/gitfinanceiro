@@ -1,4 +1,6 @@
-﻿@model PagedList.PagedList<bancos_contas>
+﻿
+@model IEnumerable<Financeiro.Models.bancos_contas>
+
 @using PagedList;
 @using PagedList.Mvc;
 @{
@@ -70,7 +72,7 @@
 
 </table>
 
-@Html.PagedListPager(pagina => Url.Action("Index", new { pagina }))
+@Html.PagedListPager(pagina => Url.Action("Index", new { pag }))
 <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-lg">
