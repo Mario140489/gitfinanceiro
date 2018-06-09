@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Financeiro.Conexao;
 using Financeiro.Models;
+using PagedList;
 
 namespace Financeiro.Controllers
 {
@@ -17,10 +18,11 @@ namespace Financeiro.Controllers
         private Contexto db = new Contexto();
 
         // GET: bancos_contas
-        public async Task<ActionResult> Index()
+        public ActionResult Index(int? pag)
         {
-            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta);
-            return View(await bancos_contas.ToListAsync());
+            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado== "N").OrderBy(b => b.bancos_contas_id);
+            var bc = bancos_contas.ToPagedList(pag ?? 1, 10);
+            return View(bc);
         }
 
         // GET: bancos_contas/Details/5

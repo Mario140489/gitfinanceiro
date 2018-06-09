@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Financeiro.Models.bancos_contas>
-
+﻿@model PagedList.PagedList<bancos_contas>
+@using PagedList;
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
 }
@@ -69,7 +70,7 @@
 
 </table>
 
-</table>
+@Html.PagedListPager(pagina => Url.Action("Index", new { pagina }))
 <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-lg">
@@ -96,16 +97,16 @@
 </div>
 @section scripts{
     <script type="text/javascript">
-            $(document).ready(function () {
-                $(".btnnovo").click(function () {
-                    //*var id = $(this).data("value");
-                    $("#teste").load("/bancos_contas/Create/",
-                        function () {
-                            $("#exampleModalCenter").modal("show");
-                        }
-                    );
+        $(document).ready(function () {
+            $(".btnnovo").click(function () {
+                //*var id = $(this).data("value");
+                $("#teste").load("/bancos_contas/Create/",
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
 
-                });
             });
+        });
     </script>
 }
