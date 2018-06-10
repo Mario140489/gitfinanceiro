@@ -1,6 +1,4 @@
-﻿
-@model IEnumerable<Financeiro.Models.bancos_contas>
-
+﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
 @using PagedList;
 @using PagedList.Mvc;
 @{
@@ -16,66 +14,13 @@
 
     </a>
 </p>
-<table class="table table-striped table-hover table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
-    <tr class="thead-dark corpadrao">
-        <th>
-            @Html.DisplayNameFor(model => model.descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bancos.descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tp_conta.descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.conta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.agencia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.saldo)
-        </th>
-        <th></th>
-    </tr>
+<div class="container-fluid">
+    @Html.Action("Listar")
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.bancos.descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tp_conta.descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.conta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.agencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.saldo)
-            </td>
-            <td>
-                <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="oi oi-pencil"></span></a>
-                <a href="#" class="btn btn-outline-info btn-sm btndetalhes" id="btnteste" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="Detalhes">
-                    <span class="oi oi-list"></span>
-                </a>
-                <a class="btn btn-outline-danger btn-sm" href="@Url.Action("Delete","bancos_contas",new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Excluir"><span class="oi oi-x"></span></a>
-            </td>
-        </tr>
-    }
-
-</table>
-
-@Html.PagedListPager(pagina => Url.Action("Index", new { pag }))
+</div>
 <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content modal-lg">
+        <div class="modal-content">
             <div class="modal-body">
                 <div id="teste">
 
@@ -85,30 +30,26 @@
         </div>
     </div>
 </div>
-<div class="modal fade" data-backdrop="static" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content  modal-lg">
-            <div class="modal-body">
-                <div id="create">
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 @section scripts{
     <script type="text/javascript">
-        $(document).ready(function () {
-            $(".btnnovo").click(function () {
-                //*var id = $(this).data("value");
-                $("#teste").load("/bancos_contas/Create/",
-                    function () {
-                        $("#exampleModalCenter").modal("show");
-                    }
-                );
+            $(document).ready(function () {
+                $(".btndetalhes").click(function () {
+                    var id = $(this).data("value");
+                    $("#teste").load("/bancos_contas/Details/" + id,
+                        function () {
+                            $("#exampleModalCenter").modal("show");
+                        }
+                    );
 
+                });
+                $(".btnnovo").click(function () {
+                    $("#teste").load("@Url.Action("Create","bancos_contas")",
+                        function () {
+                            $("#exampleModalCenter").modal("show");
+                        }
+                    );
+
+                });
             });
-        });
     </script>
 }

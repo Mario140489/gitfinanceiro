@@ -1,154 +1,50 @@
 ﻿@model Financeiro.Models.bancos_contas
 
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
 <div>
-    <h4>bancos_contas</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.bancos.descricao)
-        </dt>
+    <h6>
+        Detalhes da conta <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </h6>
 
-        <dd>
-            @Html.DisplayFor(model => model.bancos.descricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tp_conta.descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tp_conta.descricao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.descricao)
-        </dt>
-
-        <dd>
+    <hr class="corpadrao" />
+    <div style="font-size:small">
+        <div class="">
+            <b>@Html.DisplayNameFor(model => model.descricao):</b>
             @Html.DisplayFor(model => model.descricao)
-        </dd>
+        </div>
+        <div class="">
+            <b>@Html.DisplayNameFor(model => model.bancos.descricao):</b>
+            @Html.DisplayFor(model => model.bancos.descricao)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.conta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.conta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.agencia)
-        </dt>
-
-        <dd>
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.tp_conta.descricao):</b>
+            @Html.DisplayFor(model => model.tp_conta.descricao)
+            <b>@Html.DisplayNameFor(model => model.agencia):</b>
             @Html.DisplayFor(model => model.agencia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.saldo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.saldo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.nib)
-        </dt>
-
-        <dd>
+            <b> @Html.DisplayNameFor(model => model.conta):</b>
+            @Html.DisplayFor(model => model.conta)
+        </div>
+        <div class="">
+            <b>@Html.DisplayNameFor(model => model.nib):</b>
             @Html.DisplayFor(model => model.nib)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.swift)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.swift)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.iban)
-        </dt>
-
-        <dd>
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.iban):</b>
             @Html.DisplayFor(model => model.iban)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.obs)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.obs)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apagado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apagado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dtcadastro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dtcadastro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cad_usuario_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.cad_usuario_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dtalteracao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dtalteracao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.alt_usuario_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.alt_usuario_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.apag_usuario_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.apag_usuario_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
-
-    </dl>
+        </div>
+        <div>
+            <b> @Html.DisplayNameFor(model => model.swift):</b>
+            @Html.DisplayFor(model => model.swift)
+        </div>
+        <div style="text-align:right">
+            <b> @Html.DisplayNameFor(model => model.saldo):</b>
+            @Html.DisplayFor(model => model.saldo)
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.bancos_contas_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<hr class="corpadrao" />
+<div align="right">
+    <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="oi oi-pencil"></span></a>
+</div>
