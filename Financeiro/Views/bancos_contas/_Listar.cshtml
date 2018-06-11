@@ -1,26 +1,25 @@
-﻿@model IEnumerable<Financeiro.Models.bancos_contas>
-@using X.PagedList;
-@using X.PagedList.Mvc;
-
+﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
+@using PagedList;
+@using PagedList.Mvc;
 <table class="table table-striped table-hover table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
     <tr class="thead-dark corpadrao">
         <th>
-            @Html.DisplayNameFor(model => model.descricao)
+            Descrição
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.bancos.descricao)
+           Bancos
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tp_conta.descricao)
+            Tipo de Conta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.conta)
+            Num. Conta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.agencia)
+          Agencia
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.saldo)
+            Saldo
         </th>
         <th></th>
     </tr>
@@ -57,4 +56,7 @@
     }
 
 </table>
-@Html.PagedListPager((Model), page => Url.Action("Index", new { page }));
+<div style="font-size:small">
+    Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) de @Model.PageCount
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+</div>

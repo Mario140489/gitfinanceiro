@@ -1,12 +1,13 @@
-﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
+﻿
 @using PagedList;
 @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h4>Contas</h4>
+<hr class="corpadrao" />
 <p>
     @Html.ActionLink("Create New", "Create")
     <a href="#" class="btn btn-success btnnovo btn-sm " id="btnnovo" data-toggle="tooltip" data-placement="top" title="Nova conta">
@@ -14,6 +15,9 @@
 
     </a>
 </p>
+<div id="teste2">
+
+</div>
 <div class="container-fluid">
     @Html.Action("Listar")
 
@@ -43,9 +47,9 @@
 
                 });
                 $(".btnnovo").click(function () {
-                    $("#teste").load("@Url.Action("Create","bancos_contas")",
+                    $("#teste2").load("@Url.Action("Create","bancos_contas")",
                         function () {
-                            $("#exampleModalCenter").modal("show");
+                           // $("#exampleModalCenter").modal("show");
                         }
                     );
 
