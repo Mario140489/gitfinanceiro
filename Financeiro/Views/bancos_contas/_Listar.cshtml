@@ -56,7 +56,11 @@
     }
 
 </table>
-<div style="font-size:small">
-    Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) de @Model.PageCount
-    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+<div class="row" style="font-size:small">
+    <div class="col-6">
+        @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina }))
+    </div>
+    <div class="col-6" style="text-align:right">
+        Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) de @Model.PageCount
+    </div>
 </div>

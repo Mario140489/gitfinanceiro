@@ -25,13 +25,36 @@ namespace Financeiro.Controllers
             //var bc = bancos_contas.ToPagedList(pag ?? 1, 10);
             return View();
         }
-        public PartialViewResult Listar(int? pagina)
+        public PartialViewResult Listar(int? pagina, string Buscar)
         {
             int paginatamanho = 10;
             int paginaNumero = (pagina ?? 1);
-            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N").OrderBy(b => b.bancos_contas_id);
+            if(Buscar is null && pagina is null)
+            {
 
-            return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N").OrderBy(b => b.bancos_contas_id);
+                return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+            }
+            else
+            {
+                if (Buscar is null && pagina > 1)
+                {
+                  string  buscando = Buscar;
+                    var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(buscando)).OrderBy(b => b.bancos_contas_id);
+                    return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                }
+                else
+                {
+                
+                    pagina = 1;
+                    var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(Buscar)).OrderBy(b => b.bancos_contas_id);
+                    return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+
+                }
+              
+            }
+          
+           
         }
         // GET: bancos_contas/Details/5
         public async Task<ActionResult> Details(int? id)
