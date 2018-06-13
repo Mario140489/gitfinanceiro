@@ -14,10 +14,12 @@ using PagedList;
 
 namespace Financeiro.Controllers
 {
+    
     public class bancos_contasController : Controller
     {
         private Contexto db = new Contexto();
 
+        static string buscando;
         // GET: bancos_contas
         public ActionResult Index(int? pag)
         {
@@ -32,21 +34,33 @@ namespace Financeiro.Controllers
             if(Buscar is null && pagina is null)
             {
 
-                var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N").OrderBy(b => b.bancos_contas_id);
+                var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.status == "A").OrderBy(b => b.bancos_contas_id);
                 return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
             }
             else
             {
-                if (Buscar is null && pagina > 1)
-                {
-                  string  buscando = Buscar;
-                    var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(buscando)).OrderBy(b => b.bancos_contas_id);
-                    return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                if (Buscar is null && pagina >= 1)
+                { 
+                
+                    if(Buscar != null )
+                    {
+                        buscando = Buscar;
+                    }
+                    if(buscando == Buscar)
+                    {
+                        var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N").OrderBy(b => b.bancos_contas_id);
+                        return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                    }
+                    else
+                    {
+                        var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(buscando)).OrderBy(b => b.bancos_contas_id);
+                        return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                    }
                 }
                 else
                 {
-                
-                    pagina = 1;
+                    buscando = Buscar;
+                    paginaNumero = 1;
                     var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(Buscar)).OrderBy(b => b.bancos_contas_id);
                     return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
 
