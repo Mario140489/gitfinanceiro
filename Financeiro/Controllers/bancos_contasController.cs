@@ -27,8 +27,9 @@ namespace Financeiro.Controllers
             //var bc = bancos_contas.ToPagedList(pag ?? 1, 10);
             return View();
         }
-        public PartialViewResult Listar(int? pagina, string Buscar)
+        public PartialViewResult Listar(int? pagina, string Buscar, string ativo, string inativo)
         {
+            
             int paginatamanho = 10;
             int paginaNumero = (pagina ?? 1);
             if(Buscar is null && pagina is null)
