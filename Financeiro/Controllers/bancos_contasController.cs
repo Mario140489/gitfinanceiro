@@ -21,12 +21,28 @@ namespace Financeiro.Controllers
 
         static string buscando;
         static string filtro;
+        static  string ativo;
+        static  string inativo;
         // GET: bancos_contas
-        public ActionResult Index(int? pag, string ativo, string inativo)
+        public ActionResult Index(string ativo, string inativo)
         {
             if(ativo is null && inativo is null)
             {
                 ViewBag.ativo = "checked";
+            }
+            if (ativo != null && inativo != null)
+            {
+                filtro = "";
+            }
+            if (ativo != null && inativo is null)
+            {
+                filtro = ativo;
+                ViewBag.ativo = "checked";
+            }
+            if (ativo is null && inativo != null)
+            {
+                filtro = inativo;
+                ViewBag.inativo = "checked";
             }
             // var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado== "N").OrderBy(b => b.bancos_contas_id);
             //var bc = bancos_contas.ToPagedList(pag ?? 1, 10);
