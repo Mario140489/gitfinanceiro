@@ -3,13 +3,17 @@
 @using PagedList.Mvc;
 
 @{
+    /**/
+
     ViewBag.Title = "Index";
+    var at = ViewBag.ativo;
+    var it = ViewBag.inativo;
 }
 
 <h4>Contas</h4>
 <hr class="corpadrao" />
 <p>
-    
+
 </p>
 <div>
     <divcol-10 class="row">
@@ -17,18 +21,19 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-            <div class="row container-fluid form-group">
-
-                <input class="form-control form-control-sm" id="Buscar" name="Buscar" />&nbsp <input type="submit" value="Buscar" class=" btn btn-sm btn-default" />
-                                                                                              <div class="form-check form-check-inline">
-                                                                                                  &nbsp &nbsp  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="ativo" value="A" checked>
-                                                                                                  <label class="form-check-label fontepequena"style="font-size:small" for="inlineCheckbox1">Ativos</label>
-                                                                                              </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" name="inativo" type="checkbox" id="inlineCheckbox2" value="I">
-                    <label class="form-check-label fontepequena" style="font-size:small" for="inlineCheckbox2">Inativos</label>
+                <div class="row container-fluid form-group">
+                    <a>@ViewBag.inativo</a>
+                    <input class="form-control form-control-sm" id="Buscar" name="Buscar" />&nbsp
+                    <input type="submit" value="Buscar" class=" btn btn-sm btn-default" />
+                    <div class="form-check form-check-inline">
+                        &nbsp &nbsp  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="ativo" value="A" @ViewBag.ativo  >
+                        <label class="form-check-label fontepequena" style="font-size:small" for="inlineCheckbox1">Ativos</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="inativo" type="checkbox" id="inlineCheckbox2" value="I" @ViewBag.inativo>
+                        <label class="form-check-label fontepequena" style="font-size:small" for="inlineCheckbox2">Inativos</label>
+                    </div>
                 </div>
-            </div>
             }
         </div>
         <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" align="right">
@@ -37,8 +42,8 @@
             </a>
 
         </div>
-    </div col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-    @Html.Action("Listar")
+</div>
+@Html.Action("Listar")
 </div>
 <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -73,7 +78,7 @@
                     );
 
                 });
-              
+
             });
     </script>
 }
