@@ -21,27 +21,36 @@ namespace Financeiro.Controllers
 
         static string buscando;
         static string filtro;
-        static  string ativo;
-        static  string inativo;
         // GET: bancos_contas
         public ActionResult Index(string ativo, string inativo)
         {
-            if(ativo is null && inativo is null)
+            if (ativo is null && inativo is null)
             {
                 ViewBag.ativo = "checked";
             }
-            if (ativo != null && inativo != null)
+            if (ativo == "on" && inativo == "on")
             {
-                filtro = "";
+                ViewBag.ativo = "checked";
+                ViewBag.inativo = "checked";
             }
-            if (ativo != null && inativo is null)
+            if (ativo != null && inativo is null )
             {
-                filtro = ativo;
+                filtro = "A";
                 ViewBag.ativo = "checked";
             }
-            if (ativo is null && inativo != null)
+            if(ativo == "on" && inativo == "checked")
             {
-                filtro = inativo;
+                filtro = "A";
+                ViewBag.ativo = "checked";
+            }
+            if (ativo is null && inativo != null  )
+            {
+                filtro = "I";
+                ViewBag.inativo = "checked";
+            }
+            if(ativo == "checked" && inativo == " on")
+            {
+                filtro = "I";
                 ViewBag.inativo = "checked";
             }
             // var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado== "N").OrderBy(b => b.bancos_contas_id);
@@ -50,22 +59,36 @@ namespace Financeiro.Controllers
         }
         public PartialViewResult Listar(int? pagina, string Buscar, string ativo, string inativo)
         {
-            
-            if(ativo != null && inativo != null)
+            if (ativo is null && inativo is null)
             {
-                filtro = "";
-            }
-            if(ativo != null && inativo is null)
-            {
-                filtro =  ativo;
                 ViewBag.ativo = "checked";
             }
-            if(ativo is null && inativo != null )
+            if (ativo == "on" && inativo == "on")
             {
-                filtro =  inativo;
+                ViewBag.ativo = "checked";
                 ViewBag.inativo = "checked";
             }
-            
+            if (ativo != null && inativo is null)
+            {
+                filtro = "A";
+                ViewBag.ativo = "checked";
+            }
+            if (ativo == "on" && inativo == "checked")
+            {
+                filtro = "A";
+                ViewBag.ativo = "checked";
+            }
+            if (ativo is null && inativo != null)
+            {
+                filtro = "I";
+                ViewBag.inativo = "checked";
+            }
+            if (ativo =="checked" && inativo == "on")
+            {
+                filtro = "I";
+                ViewBag.inativo = "checked";
+            }
+
             int paginatamanho = 10;
             int paginaNumero = (pagina ?? 1);
             if(Buscar is null && pagina is null)
@@ -103,10 +126,20 @@ namespace Financeiro.Controllers
                     }
                     else
                     {
-                        buscando = Buscar;
-                        paginaNumero = 1;
-                        var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(Buscar) && b.status == filtro).OrderBy(b => b.bancos_contas_id);
-                        return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                        if (ativo == "on" && inativo == "on")
+                        {
+                            buscando = Buscar;
+                            paginaNumero = 1;
+                            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(Buscar)).OrderBy(b => b.bancos_contas_id);
+                            return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                        }
+                        else
+                        {
+                            buscando = Buscar;
+                            paginaNumero = 1;
+                            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(Buscar) && b.status == filtro).OrderBy(b => b.bancos_contas_id);
+                            return PartialView("_Listar", bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                        }
                     }
                    
 
