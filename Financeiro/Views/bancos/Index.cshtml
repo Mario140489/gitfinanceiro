@@ -1,33 +1,79 @@
-﻿@model IEnumerable<Financeiro.Models.bancos>
+﻿
+@using PagedList;
+@using PagedList.Mvc;
 
-@{
-    ViewBag.Title = "Index";
+<div>
+    <h4>Bancos</h4>
+    <hr class="corpadrao" />
+    <divcol-10 class="row">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="row container-fluid form-group">
+                    <input class="form-control form-control-sm" id="Buscar" name="Buscar" />&nbsp
+                    <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
+                </div>
+            }
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" align="right">
+            <a href="#" class="btn btn-success btnnovo btn-sm " id="btnnovo" data-toggle="tooltip" data-placement="top" title="Nova conta">
+                <span class="fa fa-plus"></span> Adicionar conta
+            </a>
+        </div>
+</div>
+<div class="col-12">
+    @Html.Action("Listar")
+</div>
+<div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="teste">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#btnsair').click(limpar);
+            function limpar() {
+                $('#teste2').html('');
+            }
+
+            $(".btndetalhes").click(function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos/Details/" + id,
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+            $("#btnnovo").click(function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos/Create/",
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+            //$(".btnnovo").click(function () {
+            // $("#teste2").load("",
+            // function () {
+            //  $("#exampleModalCenter").modal("show");
+            // }
+            // );
+
+            //});
+
+        });
+    </script>
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.descricao)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.descricao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.bancos_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.bancos_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.bancos_id })
-        </td>
-    </tr>
-}
-
-</table>

@@ -12,5 +12,6 @@ namespace Financeiro.Models
         public int bancos_id { get; set; }
         [Display(Name ="Banco")]
         public string descricao { get; set; }
+        public string apagado { get; set; }
     }
 }

@@ -22,12 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+.col-sem-margem {
+    padding-left: 0px;
+    padding-right: 0px;
+}
 .corpadrao {
     background-color:steelblue;
 }
-.corfonte_banco{
-    color:white
+.corfonte_banco {
+    color:white;
 }
-.fontepequena{
+.fontepequena {
     font-size:small;
+}
+.espaco_form {
+    margin:0;
+}
+.corform {
+    background-color:lightsteelblue;
 }

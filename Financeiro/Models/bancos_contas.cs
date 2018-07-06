@@ -16,14 +16,11 @@ namespace Financeiro.Models
         [StringLength(100,MinimumLength =10,ErrorMessage = "Descrição deve conter mínimo de 10 e máximo 100 caracteres!")]
         [Required(ErrorMessage = "Campo obrigatório!")]
         public string descricao { get; set; }
-
         [Required(ErrorMessage = "Campo obrigatório!")]
         [Display(Name = "Conta")]
-        [StringLength(100, MinimumLength = 10, ErrorMessage = "Descrição deve conter mínimo de 1 e máximo 20 caracteres!")]
         public string conta { get; set; }       
         [Display(Name = "Agencia")]
         [Required(ErrorMessage = "Campo obrigatório!")]
-        [StringLength(100, MinimumLength = 10, ErrorMessage = "Descrição deve conter mínimo de 1 e máximo 20 caracteres!")]
         public string agencia { get; set; }
         [Display(Name = "Saldo")]
         public decimal saldo { get; set; }

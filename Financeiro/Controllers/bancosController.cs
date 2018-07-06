@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using Financeiro.Conexao;
 using Financeiro.Models;
+using PagedList;
+using X.PagedList;
 
 namespace Financeiro.Controllers
 {
@@ -17,13 +19,21 @@ namespace Financeiro.Controllers
         private Contexto db = new Contexto();
 
         // GET: bancos
-        public async Task<ActionResult> Index()
+        public  ActionResult Index()
         {
-            return View(await db.bancos.ToListAsync());
+            return View();
+        }
+           public PartialViewResult Listar(int? pagina, string Buscar)
+        {
+            var bancos = db.bancos.Where(b => b.apagado == "N").OrderBy(b => b.descricao);
+            int paginatamanho = 10;
+            int paginaNumero = (pagina ?? 1);
+            return PartialView("_Listar",bancos.ToPagedList(paginaNumero, paginatamanho));
+           
         }
 
         // GET: bancos/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -38,9 +48,9 @@ namespace Financeiro.Controllers
         }
 
         // GET: bancos/Create
-        public ActionResult Create()
+        public PartialViewResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: bancos/Create
@@ -61,7 +71,7 @@ namespace Financeiro.Controllers
         }
 
         // GET: bancos/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int id)
         {
             if (id == null)
             {
@@ -92,7 +102,7 @@ namespace Financeiro.Controllers
         }
 
         // GET: bancos/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int id)
         {
             if (id == null)
             {
@@ -109,7 +119,7 @@ namespace Financeiro.Controllers
         // POST: bancos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
             bancos bancos = await db.bancos.FindAsync(id);
             db.bancos.Remove(bancos);
