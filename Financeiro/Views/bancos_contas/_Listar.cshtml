@@ -21,7 +21,9 @@
         <th>
             Saldo
         </th>
-        <th></th>
+        <th style="text-align:center">
+        Operações
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -45,7 +47,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.saldo)
             </td>
-            <td align="right">
+            <td align="center">
                 <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
                 <a href="#" class="btn btn-info btn-sm btndetalhes" id="btnteste" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="Detalhes">
                     <span class="fa fa-list"></span> Detalhes
