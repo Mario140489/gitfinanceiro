@@ -303,23 +303,21 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            bancos_contas.apagado = "S";
-            db.Entry(bancos_contas).State = EntityState.Modified;
-            await db.SaveChangesAsync();
-            return PartialView();
+            return PartialView(bancos_contas);
          
         }
 
         // POST: bancos_contas/Delete/5
-        /*[HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             bancos_contas bancos_contas = await db.bancos_contas.FindAsync(id);
-            db.bancos_contas.Remove(bancos_contas);
+            bancos_contas.apagado = "S";
+            db.Entry(bancos_contas).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

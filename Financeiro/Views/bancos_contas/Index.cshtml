@@ -11,8 +11,8 @@
 <div>
     <h4>Contas</h4>
     <hr class="corpadrao" />
-    <divcol-10 class="row">
-        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -30,14 +30,13 @@
                 </div>
             }
         </div>
-        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" align="right">
+        <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2" align="right">
             <a href="@Url.Action("Create","bancos_contas")" class="btn btn-success btnnovo btn-sm " id="btnnovo" data-toggle="tooltip" data-placement="top" title="Nova conta">
                 <span class="fa fa-plus"></span> Adicionar conta
             </a>
-
-
         </div>
 </div>
+    <hr class="corpadrao" />
 <div class="col-12">
     @Html.Action("Listar")
 </div>
@@ -49,7 +48,7 @@
 
                 </div>
             </div>
-
+            </div>
         </div>
     </div>
 </div>
