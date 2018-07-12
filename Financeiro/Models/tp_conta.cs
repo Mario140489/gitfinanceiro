@@ -15,7 +15,7 @@ namespace Financeiro.Models
         [Required(ErrorMessage = "Campo obrigatório!")]
         [Display(Name ="Tipo de conta")]
         public string descricao { get; set; }
-        public int fundos { get; set; }
-        public int investimento { get; set; }
+        public bool fundos { get; set; }
+        public bool investimento { get; set; }
     }
 }

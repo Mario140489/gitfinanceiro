@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/simple-sidebar.css" rel="stylesheet" />
 </head>
 <body class="">
 
@@ -25,10 +26,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros</a>
                     <div class="dropdown-menu dropright" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item dropdown-toggle " href="#" id="contas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Contas</a>
+                        <a class="dropdown-item dropdown-toggle " href="#" id="contas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contas</a>
                         <div class="dropdown-menu" aria-labelledby="contas">
                             <a class="dropdown-item" href="@Url.Action("Index","bancos_contas")">Contas Correntes</a>
                             <a class="dropdown-item" href="@Url.Action("Index","bancos")">Bancos</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","tp_conta")">Bancos</a>
                         </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="@Url.Action("Index","bancos")">Classificação</a>
@@ -65,12 +67,10 @@
             </div>
         </div>
     </div>-->
-    <p>
-
-    </p>
-    <div class="container-fluid">
-        @RenderBody()
-    </div>
+    <p></p>
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
     <hr class="corpadrao" />
     <div>
         <footer>
@@ -82,5 +82,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/inputmask")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

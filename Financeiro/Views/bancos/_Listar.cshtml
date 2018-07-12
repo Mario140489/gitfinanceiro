@@ -18,11 +18,13 @@
                     @Html.DisplayFor(modelItem => item.descricao)
                 </td>
                 <td align="right">
-                    <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","bancos",new { id = item.bancos_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
+                    <a href="#" class="btn btn-primary  btn-sm btnedit" id="btnedit" data-value="@item.bancos_id" data-toggle="tooltip" data-placement="top" title="Excluir">
+                        <span class="fa fa-pencil"></span> Editar
+                    </a>
                     <a href="#" class="btn btn-info btn-sm btndetalhes" id="btnteste" data-value="@item.bancos_id" data-toggle="tooltip" data-placement="top" title="Detalhes">
                         <span class="fa fa-list"></span> Detalhes
                     </a>
-                    <a href="#" class="btn btn-danger btn-sm btndelete" id="btndelete" data-value="@item.bancos_id" data-toggle="tooltip" data-placement="top" title="Excluir">
+                    <a href="#" class="btn btn-danger btn-sm btndelete" id="btndelete" data-value="@item.bancos_id " data-toggle="tooltip" data-placement="top" title="Detalhes">
                         <span class="fa fa-minus"></span> Excluir
                     </a>
                 </td>

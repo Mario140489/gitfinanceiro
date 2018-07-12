@@ -202,6 +202,7 @@
     <Content Include="Content\open-iconic.css" />
     <Content Include="Content\open-iconic.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\simple-sidebar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
@@ -341,11 +342,6 @@
     <Content Include="Views\bancos\Edit.cshtml" />
     <Content Include="Views\bancos\Index.cshtml" />
     <Content Include="Views\bancos_contas.old\Details.cshtml" />
-    <Content Include="Views\tp_conta\Create.cshtml" />
-    <Content Include="Views\tp_conta\Delete.cshtml" />
-    <Content Include="Views\tp_conta\Details.cshtml" />
-    <Content Include="Views\tp_conta\Edit.cshtml" />
-    <Content Include="Views\tp_conta\Index.cshtml" />
     <Content Include="Views\bancos_contas\Delete.cshtml" />
     <Content Include="Views\bancos_contas\Details.cshtml" />
     <Content Include="Views\bancos_contas\Edit.cshtml" />
@@ -354,6 +350,11 @@
     <Content Include="Views\bancos_contas\Create.cshtml" />
     <Content Include="Views\bancos_contas\_Create.cshtml" />
     <Content Include="Views\bancos\_Listar.cshtml" />
+    <Content Include="Views\tp_conta\Create.cshtml" />
+    <Content Include="Views\tp_conta\Delete.cshtml" />
+    <Content Include="Views\tp_conta\Details.cshtml" />
+    <Content Include="Views\tp_conta\Edit.cshtml" />
+    <Content Include="Views\tp_conta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

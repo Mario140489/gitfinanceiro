@@ -1,18 +1,19 @@
 ﻿@model Financeiro.Models.bancos_contas
-
-<h4>Atenção</h4>
+<h6>
+    Detalhes da conta <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</h6>
 <hr class="corpadrao" />
 <a style="text-align:center">Deseja realmente deletar essa conta?</a>
 <hr class="corpadrao" />
 <div align="right">
-    <a class="btn btn-outline-danger btn-sm" href="#" data-toggle="tooltip" data-placement="top" title="Excluir"><span class="fa fa-minus"></span> Excluir</a>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-outline-danger btn-sm" />
         </div>
     }
 </div>

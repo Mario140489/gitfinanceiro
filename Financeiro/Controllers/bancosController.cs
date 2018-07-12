@@ -24,18 +24,28 @@ namespace Financeiro.Controllers
             return View();
         }
            public PartialViewResult Listar(int? pagina, string Buscar)
-        {
-            var bancos = db.bancos.Where(b => b.apagado == "N").OrderBy(b => b.descricao);
-            int paginatamanho = 10;
-            int paginaNumero = (pagina ?? 1);
-            return PartialView("_Listar",bancos.ToPagedList(paginaNumero, paginatamanho));
+        {   if(Buscar != null)
+            {
+                var bancos = db.bancos.Where(b => b.apagado == "N" && b.descricao.Contains(Buscar)).OrderBy(b => b.descricao);
+                int paginatamanho = 10;
+                int paginaNumero = (pagina ?? 1);
+                return PartialView("_Listar", bancos.ToPagedList(paginaNumero, paginatamanho));
+            }
+        else
+            {
+                var bancos = db.bancos.Where(b => b.apagado == "N").OrderBy(b => b.descricao);
+                int paginatamanho = 10;
+                int paginaNumero = (pagina ?? 1);
+                return PartialView("_Listar", bancos.ToPagedList(paginaNumero, paginatamanho));
+            }
+          
            
         }
 
         // GET: bancos/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -62,6 +72,7 @@ namespace Financeiro.Controllers
         {
             if (ModelState.IsValid)
             {
+                bancos.apagado = "N";
                 db.bancos.Add(bancos);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -73,7 +84,7 @@ namespace Financeiro.Controllers
         // GET: bancos/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -82,7 +93,7 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return View(bancos);
+            return PartialView(bancos);
         }
 
         // POST: bancos/Edit/5
@@ -94,6 +105,7 @@ namespace Financeiro.Controllers
         {
             if (ModelState.IsValid)
             {
+                bancos.apagado = "N";
                 db.Entry(bancos).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -104,7 +116,7 @@ namespace Financeiro.Controllers
         // GET: bancos/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -113,7 +125,7 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return View(bancos);
+            return PartialView(bancos);
         }
 
         // POST: bancos/Delete/5
@@ -122,7 +134,8 @@ namespace Financeiro.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             bancos bancos = await db.bancos.FindAsync(id);
-            db.bancos.Remove(bancos);
+            bancos.apagado = "S";
+             db.Entry(bancos).State = EntityState.Modified;
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

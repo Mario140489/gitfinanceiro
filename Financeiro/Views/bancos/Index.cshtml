@@ -65,6 +65,24 @@
                 );
 
             });
+            $(".btnedit").click(function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos/Edit/" + id,
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+            $(".btndelete").click(function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos/Delete/" + id,
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
             //$(".btnnovo").click(function () {
             // $("#teste2").load("",
             // function () {
