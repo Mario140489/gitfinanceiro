@@ -26,17 +26,20 @@
                         <span class="fa fa-plus"></span>
                     </a>
                 </div>
-                @Html.ValidationMessageFor(model => model.bancos_id, "", new { @class = "text-danger col-form-label-sm" })
             </div>
         </div>
 
         <div class="col-sm-4 col-md-7 col-lg-7 col-xl-7">
             @Html.LabelFor(model => model.idtp_conta, "Tipo de conta", htmlAttributes: new { @class = "control-label col-md-4 col-form-label-sm " })
             <div class="col-md-12">
-                @Html.DropDownList("idtp_conta", null, htmlAttributes: new { @class = "form-control form-control-sm col-md-4" })
-                @Html.ValidationMessageFor(model => model.idtp_conta, "", new { @class = "text-danger col-form-label-sm" })
+                <div class="container-fluid row">
+                    @Html.DropDownList("idtp_conta", null, htmlAttributes: new { @class = "form-control form-control-sm col-md-4" })
+                    &nbsp<a href="#" class="btn btn-success btndetalhes btn-sm" id="btnnovaconta" data-toggle="tooltip" data-placement="top" title="Nova Conta">
+                        <span class="fa fa-plus"></span>
+                    </a>
+                </div>
+                </div>
             </div>
-        </div>
 
         <div>
             @Html.LabelFor(model => model.conta, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm " })
@@ -117,6 +120,14 @@
         
                 $("#btnnovo").click(function () {
                     $("#teste").load("@Url.Action("Create","bancos")",
+                        function () {
+                       $("#exampleModalCenter").modal("show");
+                      }
+                   );
+
+            });
+            $("#btnnovaconta").click(function () {
+                    $("#teste").load("@Url.Action("Index","tp_conta")",
                         function () {
                        $("#exampleModalCenter").modal("show");
                       }

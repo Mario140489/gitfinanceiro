@@ -1,17 +1,25 @@
 ﻿@model Financeiro.Models.tp_conta
-
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@using (Html.BeginForm())
+{ @Html.AntiForgeryToken()
+<td>
+    @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+    @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger" })
+</td>
+<td>
+    @Html.EditorFor(model => model.fundos)
+    @Html.ValidationMessageFor(model => model.fundos, "", new { @class = "text-danger" })
+</td>
+<td>
+    @Html.EditorFor(model => model.investimento)
+    @Html.ValidationMessageFor(model => model.investimento, "", new { @class = "text-danger" })
+</td>
+<td></td>
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
+<!--@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>tp_conta</h4>
         <hr />
@@ -55,7 +63,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+    -->
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
