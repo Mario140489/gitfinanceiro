@@ -4,22 +4,23 @@
     ViewBag.Title = "Details";
 }
 
-<div>
-    <h6>
-        Detalhes do Banco <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </h6>
+<h2>Details</h2>
 
-    <hr class="corpadrao" />
-    <div style="font-size:small">
-        <div class="">
-            <b>@Html.DisplayNameFor(model => model.descricao):</b>
+<div>
+    <h4>bancos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
             @Html.DisplayFor(model => model.descricao)
-        </div>
-    </div>
+        </dd>
+
+    </dl>
 </div>
-<hr class="corpadrao" />
-<div align="right">
-    <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span>Editar</a>
-</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.bancos_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

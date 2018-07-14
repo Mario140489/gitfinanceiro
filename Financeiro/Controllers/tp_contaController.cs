@@ -19,7 +19,7 @@ namespace Financeiro.Controllers
         // GET: tp_conta
         public async Task<ActionResult> Index()
         {
-            return PartialView(await db.tp_conta.ToListAsync());
+            return View(await db.tp_conta.ToListAsync());
         }
 
         // GET: tp_conta/Details/5
@@ -38,9 +38,9 @@ namespace Financeiro.Controllers
         }
 
         // GET: tp_conta/Create
-        public PartialViewResult Create()
+        public ActionResult Create()
         {
-            return PartialView();
+            return View();
         }
 
         // POST: tp_conta/Create

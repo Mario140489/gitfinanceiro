@@ -7,11 +7,10 @@
     <title>@ViewBag.Title - Financeiro</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
-    <link href="~/Content/simple-sidebar.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
 </head>
-<body class="">
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-dark  corpadrao corfonte_banco fixed-top">
         <a class="navbar-brand">Financeiro</a>
@@ -21,30 +20,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index","Home")">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros</a>
-                    <div class="dropdown-menu dropright" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item dropdown-toggle " href="#" id="contas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contas</a>
-                        <div class="dropdown-menu" aria-labelledby="contas">
-                            <a class="dropdown-item" href="@Url.Action("Index","bancos_contas")">Contas Correntes</a>
-                            <a class="dropdown-item" href="@Url.Action("Index","bancos")">Bancos</a>
-                            <a class="dropdown-item" href="@Url.Action("Index","tp_conta")">Bancos</a>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="@Url.Action("Index","bancos")">Classificação</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("About","Home")">Sobre</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Contact","Home")">Contatos</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link " href="@Url.Action("Index","bancos_contas")">Contas</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -67,14 +54,14 @@
             </div>
         </div>
     </div>-->
-    <p></p>
-        <div class="container-fluid">
-            @RenderBody()
-        </div>
-    <hr class="corpadrao" />
-    <div>
+    <p>
+
+    </p>
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <hr />
         <footer>
-            <p style="text-align:center"> Copyright&copy; @DateTime.Now.Year - José Mario Vieira</p>
+            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
         </footer>
     </div>
 
@@ -82,6 +69,5 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/inputmask")
     @RenderSection("scripts", required: false)
-
 </body>
 </html>

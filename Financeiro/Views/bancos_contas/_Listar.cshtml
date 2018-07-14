@@ -1,29 +1,28 @@
-﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
-@using PagedList;
-@using PagedList.Mvc;
-<table class="table  table-striped table-hover table-sm">
-    <tr>
-        <th>
-            Descrição
-        </th>
-        <th>
-           Bancos
-        </th>
-        <th>
-            Tipo de Conta
-        </th>
-        <th>
-            Num. Conta
-        </th>
-        <th>
-          Agencia
-        </th>
-        <th>
-            Saldo
-        </th>
-        <th >
+﻿@model IEnumerable<Financeiro.Models.bancos_contas>
+@using X.PagedList;
+@using X.PagedList.Mvc;
 
+<table class="table table-striped table-hover table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+    <tr class="thead-dark corpadrao">
+        <th>
+            @Html.DisplayNameFor(model => model.descricao)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bancos.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tp_conta.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.conta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.agencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldo)
+        </th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -47,25 +46,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.saldo)
             </td>
-            <td align="right">
-                <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
-                <a href="#" class="btn btn-info btn-sm btndetalhes" id="btnteste" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="Detalhes">
-                    <span class="fa fa-list"></span> Detalhes
+            <td>
+                <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="oi oi-pencil"></span></a>
+                <a href="#" class="btn btn-outline-info btn-sm btndetalhes" id="btnteste" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="Detalhes">
+                    <span class="oi oi-list"></span>
                 </a>
-                <a href="#" class="btn btn-danger btn-sm btndelete" id="btndelete" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="Detalhes">
-                    <span class="fa fa-minus"></span> Excluir
-                </a>
-               
+                <a class="btn btn-outline-danger btn-sm" href="@Url.Action("Delete","bancos_contas",new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Excluir"><span class="oi oi-x"></span></a>
             </td>
         </tr>
     }
 
 </table>
-<div class="row" style="font-size:small">
-    <div class="col-6">
-        @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, ViewBag.ativo, ViewBag.inativo}))
-    </div>
-    <div class="col-6" style="text-align:right">
-        Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) de @Model.PageCount
-    </div>
-</div>

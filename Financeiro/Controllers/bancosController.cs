@@ -9,8 +9,6 @@ using System.Web;
 using System.Web.Mvc;
 using Financeiro.Conexao;
 using Financeiro.Models;
-using PagedList;
-using X.PagedList;
 
 namespace Financeiro.Controllers
 {
@@ -19,33 +17,15 @@ namespace Financeiro.Controllers
         private Contexto db = new Contexto();
 
         // GET: bancos
-        public  ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
-        }
-           public PartialViewResult Listar(int? pagina, string Buscar)
-        {   if(Buscar != null)
-            {
-                var bancos = db.bancos.Where(b => b.apagado == "N" && b.descricao.Contains(Buscar)).OrderBy(b => b.descricao);
-                int paginatamanho = 10;
-                int paginaNumero = (pagina ?? 1);
-                return PartialView("_Listar", bancos.ToPagedList(paginaNumero, paginatamanho));
-            }
-        else
-            {
-                var bancos = db.bancos.Where(b => b.apagado == "N").OrderBy(b => b.descricao);
-                int paginatamanho = 10;
-                int paginaNumero = (pagina ?? 1);
-                return PartialView("_Listar", bancos.ToPagedList(paginaNumero, paginatamanho));
-            }
-          
-           
+            return View(await db.bancos.ToListAsync());
         }
 
         // GET: bancos/Details/5
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(string id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -58,9 +38,9 @@ namespace Financeiro.Controllers
         }
 
         // GET: bancos/Create
-        public PartialViewResult Create()
+        public ActionResult Create()
         {
-            return PartialView();
+            return View();
         }
 
         // POST: bancos/Create
@@ -72,7 +52,6 @@ namespace Financeiro.Controllers
         {
             if (ModelState.IsValid)
             {
-                bancos.apagado = "N";
                 db.bancos.Add(bancos);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -82,9 +61,9 @@ namespace Financeiro.Controllers
         }
 
         // GET: bancos/Edit/5
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(string id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -93,7 +72,7 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(bancos);
+            return View(bancos);
         }
 
         // POST: bancos/Edit/5
@@ -105,7 +84,6 @@ namespace Financeiro.Controllers
         {
             if (ModelState.IsValid)
             {
-                bancos.apagado = "N";
                 db.Entry(bancos).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -114,9 +92,9 @@ namespace Financeiro.Controllers
         }
 
         // GET: bancos/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(string id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -125,17 +103,16 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(bancos);
+            return View(bancos);
         }
 
         // POST: bancos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(string id)
         {
             bancos bancos = await db.bancos.FindAsync(id);
-            bancos.apagado = "S";
-             db.Entry(bancos).State = EntityState.Modified;
+            db.bancos.Remove(bancos);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
