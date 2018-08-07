@@ -1,34 +1,31 @@
 ﻿@model Financeiro.Models.bancos_contas
-
-<div>
-    <h6>
-        Detalhes da conta <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </h6>
-
-    <hr class="corpadrao" />
-    <div style="font-size:small">
+<div class="modal-header pigendo-secondary">
+    <h5 class="modal-title">Destalhes da conta</h5>
+    <button type="button" class="close" data-dismiss="modal">
+        <span class="fa fa-close" style="color:crimson"></span>
+    </button>
+</div>
+<div class="modal-body pigendo-primary">
+    <div style="color:black">
         <div class="">
             <b>@Html.DisplayNameFor(model => model.descricao):</b>
             @Html.DisplayFor(model => model.descricao)
             @if (Model.status == "I")
             {
 
-                <B  style="float:right;color:crimson">Inativo</B>
-        
+                <B style="float:right;color:crimson">Inativo</B>
+
             }
             @if (Model.status == "A")
             {
-       
-                    <B style="float:right; color:green">Ativa</B>
-                
+
+                <B style="float:right; color:green">Ativa</B>
+
             }
         </div>
         <div class="">
             <b>@Html.DisplayNameFor(model => model.bancos.descricao):</b>
             @Html.DisplayFor(model => model.bancos.descricao)
-
         </div>
         <div>
             <b>@Html.DisplayNameFor(model => model.tp_conta.descricao):</b>
@@ -60,7 +57,8 @@
         </div>
     </div>
 </div>
-<hr class="corpadrao" />
-<div align="right">
-    <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
+<div class="modal-footer pigendo-secondary">
+    <div align="right">
+        <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
+    </div>
 </div>

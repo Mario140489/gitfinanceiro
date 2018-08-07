@@ -1,60 +1,55 @@
 ﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
 @using PagedList;
 @using PagedList.Mvc;
-
-@{
-    /**/
-
-    ViewBag.Title = "Contas";
-
-}
-<div>
-    <h4>Contas</h4>
-    <hr class="corpadrao" />
-    <div class="row">
-        <div class="col-sm-12 col-md-10 col-lg-10 col-xl-10">
-            @using (Html.BeginForm())
+<h4><span class="fa fa-money"></span> Contas Bancarias</h4>
+<div class="row">
+    <div class="col-md-6 col-9">
+        @using (Ajax.BeginForm("Listar", "bancos_contas",
+            new AjaxOptions
             {
-                @Html.AntiForgeryToken()
-                <div class="row container-fluid form-group">
-                    <input class="form-control form-control-sm" id="Buscar" name="Buscar" />&nbsp
-                    <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
-                    <div class="form-check form-check-inline">
-                        &nbsp &nbsp  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="ativo" @ViewBag.ativo>
-                        <label class="form-check-label fontepequena" style="font-size:small" for="inlineCheckbox1">Ativos</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="inativo" type="checkbox" id="inlineCheckbox2" @ViewBag.inativo>
-                        <label class="form-check-label fontepequena" style="font-size:small" for="inlineCheckbox2">Inativos</label>
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "listaconta"
+            }
+            ))
+        {
+            <div class="form-inline m-1">
+                <div class="input-group row col-12 col-md-7">
+                    <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome da conta">
+                    <div class="input-group-append">
+                        <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
                     </div>
                 </div>
-            }
-        </div>
-        <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2" align="right">
-            <a href="@Url.Action("Create","bancos_contas")" class="btn btn-success btnnovo btn-sm " id="btnnovo" data-toggle="tooltip" data-placement="top" title="Nova conta">
-                <span class="fa fa-plus"></span> Adicionar conta
-            </a>
-        </div>
-</div>
-<div class="col-12">
-    @Html.Action("Listar")
-</div>
+                <div class="custom-control custom-checkbox m-1 custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="ativo" @ViewBag.ativo>
+                    <label class="custom-control-label" for="customCheck1">ativo</label>
+                </div>
+                <div class="custom-control custom-checkbox m-1 custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="inativo" @ViewBag.inativo>
+                    <label class="custom-control-label" for="customCheck2">inativo</label>
+                </div>
+            </div>
+        }
+
+    </div>
+           
+            <div class="col-md-6 text-right col-3">
+                <a href="@Url.Action("Create","bancos_contas")" class="btn btn-sm btn-primary m-1"><span class="fa fa-plus"></span> Adicionar conta</a>
+            </div>
+            <div class="col-md-12" id="listaconta">
+                @Html.Action("Listar")
+            </div>
 <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div id="teste">
-
-                </div>
-            </div>
-            </div>
+        <div class="modal-content" id="teste">
+          
         </div>
     </div>
 </div>
 
 @section scripts{
     <script type="text/javascript">
-        $(document).ready(function () {
+    $(document).ready(function () {
 
             $('#btnsair').click(limpar);
             function limpar() {
@@ -80,7 +75,7 @@
 
             });
 
-  
+
             //$(".btnnovo").click(function () {
             // $("#teste2").load("",
             // function () {
@@ -90,6 +85,5 @@
 
             //});
 
-        });
-    </script>
+        });</script>
 }

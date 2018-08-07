@@ -26,8 +26,20 @@ textarea {
     padding-left: 0px;
     padding-right: 0px;
 }
+.ld-direito {
+    position: absolute;
+    left: 99%;
+    margin-left: -50px;
+}
 .corpadrao {
-    background-color:steelblue;
+    background-color:#4f70ce;
+}
+.corformverde {
+    background-color: #12bbad;
+}
+.preto {
+    background-color: #12bbad;
+    color: white;
 }
 .corfonte_banco {
     color:white;
@@ -160,4 +172,87 @@ textarea {
         position: relative;
         margin-right: 0;
     }
+
+}
+.pigendo-primary {
+    background-color: #12bbad;
+}
+
+a.pigendo-primary:hover, a.pigendo-primary:focus,
+button.pigendo-primary:hover,
+button.pigendo-primary:focus {
+    background-color: #0e8c82 ;
+}
+
+.pigendo-secondary {
+    background-color: #4f70ce ;
+}
+
+a.pigendo-secondary:hover, a.pigendo-secondary:focus,
+button.pigendo-secondary:hover,
+button.pigendo-secondary:focus {
+    background-color: #3355b7 ;
+}
+
+.pigendo-success {
+    background-color: #28a745 ;
+}
+
+a.pigendo-success:hover, a.pigendo-success:focus,
+button.pigendo-success:hover,
+button.pigendo-success:focus {
+    background-color: #1e7e34 ;
+}
+
+.pigendo-info {
+    background-color: #ccc ;
+}
+
+a.pigendo-info:hover, a.pigendo-info:focus,
+button.pigendo-info:hover,
+button.pigendo-info:focus {
+    background-color: #b3b3b3 ;
+}
+
+.pigendo-warning {
+    background-color: #ffc107 ;
+}
+
+a.pigendo-warning:hover, a.pigendo-warning:focus,
+button.pigendo-warning:hover,
+button.pigendo-warning:focus {
+    background-color: #d39e00;
+}
+
+.pigendo-danger {
+    background-color: #dc3545;
+}
+
+a.pigendo-danger:hover, a.pigendo-danger:focus,
+button.pigendo-danger:hover,
+button.pigendo-danger:focus {
+    background-color: #bd2130;
+}
+
+.pigendo-light {
+    background-color: #f3f3f3;
+}
+
+a.pigendo-light:hover, a.pigendo-light:focus,
+button.pigendo-light:hover,
+button.pigendo-light:focus {
+    background-color: #dadada;
+}
+
+.pigendo-dark {
+    background-color: #151515;
+}
+
+a.pigendo-dark:hover, a.pigendo-dark:focus,
+button.pigendo-dark:hover,
+button.pigendo-dark:focus {
+    background-color: black;
+}
+.fontmedia{
+    font-size:medium;
 }

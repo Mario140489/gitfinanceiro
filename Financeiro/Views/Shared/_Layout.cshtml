@@ -7,14 +7,14 @@
     <title>@ViewBag.Title - Financeiro</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
     <link href="~/Content/simple-sidebar.css" rel="stylesheet" />
 </head>
-<body class="">
-
-    <nav class="navbar navbar-expand-lg navbar-dark  corpadrao corfonte_banco fixed-top">
-        <a class="navbar-brand">Financeiro</a>
+<body class="preto">
+    <nav class="navbar fontmedia navbar-expand-lg navbar-dark bg-dark text-white fixed-top">
+        <a class="navbar-brand"><span class="fa fa-money"></span> Financeiro</a>
         <button class="navbar-toggler navbar-dark " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,7 +44,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Contact","Home")">Contatos</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link " id="hora" style="text-align:right">hora</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -68,20 +70,20 @@
         </div>
     </div>-->
     <p></p>
-        <div class="container-fluid">
+    <div class="container-fluid ">
             @RenderBody()
         </div>
-    <hr class="corpadrao" />
-    <div>
-        <footer>
-            <p style="text-align:center"> Copyright&copy; @DateTime.Now.Year - José Mario Vieira</p>
-        </footer>
-    </div>
+    <p>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/inputmask")
-    @RenderSection("scripts", required: false)
-
+    </p>
+        <div>
+            <footer>
+                <p style="text-align:center"> Copyright&copy; @DateTime.Now.Year - José Mario Vieira</p>
+            </footer>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/inputmask")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

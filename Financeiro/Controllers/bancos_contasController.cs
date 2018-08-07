@@ -223,7 +223,7 @@ namespace Financeiro.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "bancos_contas_id,descricao,bancos_id,idtp_conta,conta,agencia,saldo,nib,swift,iban,obs,apagado,dtcadastro,cad_usuario_id,dtalteracao,alt_usuario_id,apag_usuario_id,status")] bancos_contas bancos_contas)
+        public async Task<ActionResult> Create([Bind(Include = "bancos_contas_id,descricao,bancos_id,idtp_conta,conta,agencia,nib,swift,iban,obs,apagado,dtcadastro,cad_usuario_id,dtalteracao,alt_usuario_id,apag_usuario_id,status")] bancos_contas bancos_contas)
         {
 
             bancos_contas.status = "A";

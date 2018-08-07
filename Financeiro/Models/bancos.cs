@@ -11,6 +11,7 @@ namespace Financeiro.Models
         [Key]
         public int bancos_id { get; set; }
         [Display(Name ="Banco")]
+        [Required(ErrorMessage ="campo obrigatorio, não pode ser nulo")]
         public string descricao { get; set; }
         public string apagado { get; set; }
     }

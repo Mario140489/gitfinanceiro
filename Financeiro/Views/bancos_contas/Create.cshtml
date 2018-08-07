@@ -1,132 +1,103 @@
 ﻿@model Financeiro.Models.bancos_contas
 
-@using (Html.BeginForm(FormMethod.Post))
-{
-<div style="background-color:lightsteelblue">
-    @Html.AntiForgeryToken()
-    <div style="background-color:white">
-        <h5>Nova conta</h5>
-        <hr class="corpadrao" />
-    </div>
-    <div class="form-row">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="col-sm-12 col-md-12 espaco_form">
-            @Html.LabelFor(model => model.descricao, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm" })
-            <div class="col-md-12 col-lg-12 col-xl-12">
-                @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control form-control-sm col-md-5 col-lg-5" } })
-                @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger col-form-label-sm" })
-            </div>
-        </div>
-        <div class="col-sm-8 col-md-5 col-lg-5 col-lx-5 espaco_form">
-            @Html.LabelFor(model => model.bancos_id, "Bancos", htmlAttributes: new { @class = "control-label col-md-12 col-form-label-sm " })
-            <div class="col-md-12">
-                <div class="container-fluid row">
-                    @Html.DropDownList("bancos_id", null, htmlAttributes: new { @class = "form-control form-control-sm col-sm-10 col-md-9 col-lg-10 col-xl-10" })
-                    &nbsp<a href="#" class="btn btn-success btndetalhes btn-sm" id="btnnovo" data-toggle="tooltip" data-placement="top" title="Novo Banco">
-                        <span class="fa fa-plus"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 col-md-7 col-lg-7 col-xl-7">
-            @Html.LabelFor(model => model.idtp_conta, "Tipo de conta", htmlAttributes: new { @class = "control-label col-md-4 col-form-label-sm " })
-            <div class="col-md-12">
-                <div class="container-fluid row">
-                    @Html.DropDownList("idtp_conta", null, htmlAttributes: new { @class = "form-control form-control-sm col-md-4" })
-                    &nbsp<a href="#" class="btn btn-success btndetalhes btn-sm" id="btnnovaconta" data-toggle="tooltip" data-placement="top" title="Nova Conta">
-                        <span class="fa fa-plus"></span>
-                    </a>
-                </div>
-                </div>
-            </div>
-
-        <div>
-            @Html.LabelFor(model => model.conta, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm " })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.conta, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                @Html.ValidationMessageFor(model => model.conta, "", new { @class = "text-danger col-form-label-sm" })
-            </div>
-        </div>
-
-        <div>
-            @Html.LabelFor(model => model.agencia, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.agencia, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                @Html.ValidationMessageFor(model => model.agencia, "", new { @class = "text-danger col-form-label-sm" })
-            </div>
-        </div>
-
-        <div>
-            @Html.LabelFor(model => model.nib, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nib, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                @Html.ValidationMessageFor(model => model.nib, "", new { @class = "text-danger col-form-label-sm" })
-            </div>
-        </div>
-
-        <div>
-            @Html.LabelFor(model => model.swift, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.swift, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                @Html.ValidationMessageFor(model => model.swift, "", new { @class = "text-danger col-form-label-sm" })
-            </div>
-        </div>
-
-        <div>
-            @Html.LabelFor(model => model.iban, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.iban, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
-                @Html.ValidationMessageFor(model => model.iban, "", new { @class = "text-danger col-form-label-sm" })
-            </div>
-        </div>
-
-        <div class="form-group col-sm-12 col-md-12">
-            @Html.LabelFor(model => model.obs, htmlAttributes: new { @class = "control-label col-md-2 col-form-label-sm" })
-            <div class="col-md-12 espaco_form">
-                @Html.TextAreaFor(model => model.obs, htmlAttributes: new { @class = "form-control col-12" })
-                @Html.ValidationMessageFor(model => model.obs, "", new { @class = "text-danger col-form-label-sm" })
-            </div>
-        </div>
-
-        <div class="form-group col-12 text-right">
-            <div class="col-md-offset-2 col-md-12">
-                <button class="btn btn-sm btn-primary"><span class="fa fa-save"></span> Salvar</button>
-                <a class="btn btn-sm btn-danger" href="@Url.Action("Index")"><span class="fa fa-sign-out"></span> Sair</a>
-            </div>
-        </div>
-    </div>
-
-    <hr class="corpadrao" />
-</div>
-}
-    <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div id="teste">
-
+<div class="row">
+    <div class="col-md-12">
+        <h4><span class="fa fa-money"></span> Cadastro de novas contas</h4>
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-row border-white border corformverde">
+                <div class="form-group col-md-6 form-row">
+                    <div class="col-md-12 p-0">
+                        <label class=" col-form-label col-form-label-sm col-sm-10">Descrição</label>
+                        <div class="col-sm-12  col-md-12 col-lg-12 col-12 col-xl-12">
+                            @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control form-control-sm col-sm-12 col-12 col-md-12 col-lg-12 col-xl-9", @placeholder = "Nome da conta" } })
+                            @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger col-form-label-sm" })
+                        </div>
+                        <label class="col-form-label col-form-label-sm  col-sm-10">Banco</label>
+                        <div class="col-sm-12 ">
+                            @Html.DropDownList("bancos_id", null, htmlAttributes: new { @class = "form-control form-control-sm col-10 col-lg-10 col-md-10 col-xl-6 col-sm-10 col-12" })
+                        </div>
+                        <label class="col-form-label col-form-label-sm  col-sm-10">Tipo de conta</label>
+                        <div class="col-sm-12 ">
+                            @Html.DropDownList("idtp_conta", null, htmlAttributes: new { @class = "form-control form-control-sm col-lg-10 col-10 col-sm-10 col-md-10 col-xl-6 col-12" })
+                        </div>
+                        <label class="col-form-label col-form-label-sm  col-sm-10">Conta</label>
+                        <div class="col-sm-12  col-12">
+                            @Html.EditorFor(model => model.conta, new { htmlAttributes = new { @class = "form-control form-control-sm col-xl-3 col-sm-5 col-md-6 col-lg-4 col-12", @placeholder = "Conta" } })
+                            @Html.ValidationMessageFor(model => model.conta, "", new { @class = "text-danger col-form-label-sm" })
+                        </div>
+                        <label class="col-form-label col-form-label-sm  col-sm-10">Agencia</label>
+                        <div class="col-sm-12 ">
+                            @Html.EditorFor(model => model.agencia, new { htmlAttributes = new { @class = "form-control form-control-sm col-xl-3 col-sm-5 col-md-6 col-lg-4 col-12", @placeholder = "Agencia" } })
+                            @Html.ValidationMessageFor(model => model.agencia, "", new { @class = "text-danger col-form-label-sm" })
+                        </div>
                     </div>
                 </div>
-
+                <div class="form-group form-row col-md-6">
+                    <div class="col-md-12">
+                        <label class="col-form-label col-form-label-sm  col-sm-10">NIB</label>
+                        <div class="col-sm-12 ">
+                            @Html.EditorFor(model => model.nib, new { htmlAttributes = new { @class = "form-control form-control-sm col-xl-3 col-sm-5 col-md-6 col-lg-4 col-12", @placeholder = "Nib" } })
+                            @Html.ValidationMessageFor(model => model.nib, "", new { @class = "text-danger col-form-label-sm" })
+                        </div>
+                        <label class="col-form-label col-form-label-sm  col-sm-10">Swift</label>
+                        <div class="col-sm-12 ">
+                            @Html.EditorFor(model => model.swift, new { htmlAttributes = new { @class = "form-control form-control-sm col-xl-3 col-5 col-sm-5 col-md-6 col-lg-4 col-12", @placeholder = "Swift" } })
+                            @Html.ValidationMessageFor(model => model.swift, "", new { @class = "text-danger col-form-label-sm" })
+                        </div>
+                        <label class="col-form-label col-form-label-sm  col-sm-10">IBAN</label>
+                        <div class="col-sm-12 ">
+                            @Html.EditorFor(model => model.iban, new { htmlAttributes = new { @class = "form-control form-control-sm col-xl-3 col-5 col-sm-5 col-md-6 col-lg-4 col-12", @placeholder = "Iban" } })
+                            @Html.ValidationMessageFor(model => model.iban, "", new { @class = "text-danger col-form-label-sm" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-sm-2 col-form-label   col-form-label-sm">Obs</label>
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(model => model.obs, htmlAttributes: new { @class = "form-control col-12", @placeholder = "Digite aqui as observações da sua conta" })
+                        @Html.ValidationMessageFor(model => model.obs, "", new { @class = "text-danger col-form-label-sm" })
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-sm-2 col-form-label   col-form-label-sm">Opções</label>
+                    <div class="col-sm-12">
+                        <a href="@Url.Action("Index","bancos")" target="_blank" class="btn btn-warning btndetalhes btn-sm" id="btnnovo" data-toggle="tooltip" data-placement="top" title="Novo Banco">
+                            <span class="fa fa-plus"></span> Novo Banco
+                        </a>
+                        <a href="@Url.Action("Index","tp_conta")" target="_blank" class="btn btn-warning btndetalhes btn-sm" id="btnnovo" data-toggle="tooltip" data-placement="top" title="Novo Banco">
+                            <span class="fa fa-plus"></span> Novo tipo de conta
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group col-12 text-right">
+                    <div class="col-md-offset-2 col-md-12">
+                        <button class="btn btn-sm btn-primary"><span class="fa fa-save"></span> Salvar</button>
+                        <a class="btn btn-sm btn-danger" href="@Url.Action("Index")"><span class="fa fa-sign-out"></span> Sair</a>
+                    </div>
+                </div>
             </div>
+        }
+    </div>
+</div>
+<div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="teste">
+            
         </div>
     </div>
-
+</div>
+<div id="lista">
+    teste
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(document).ready(function () {
-        
-                $("#btnnovo").click(function () {
-                    $("#teste").load("@Url.Action("Create","bancos")",
-                        function () {
-                       $("#exampleModalCenter").modal("show");
-                      }
-                   );
-
-            });
+           
             $("#btnnovaconta").click(function () {
+                var form = "1";
                     $("#teste").load("@Url.Action("Index","tp_conta")",
                         function () {
                        $("#exampleModalCenter").modal("show");
@@ -134,6 +105,11 @@
                    );
 
             });
+
+            $("#btnnovotpc").click(function () {
+                $("#lista").remove();
+            });
+
 
             });
     </script>

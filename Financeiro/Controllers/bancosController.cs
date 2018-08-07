@@ -68,17 +68,21 @@ namespace Financeiro.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "bancos_id,descricao")] bancos bancos)
+        public async Task<ActionResult> Create([Bind(Include = "bancos_id,descricao")] bancos bancos,string form)
         {
-            if (ModelState.IsValid)
-            {
-                bancos.apagado = "N";
-                db.bancos.Add(bancos);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+           
+            
+                if (ModelState.IsValid)
+                {
+                    bancos.apagado = "N";
+                    db.bancos.Add(bancos);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                return PartialView(bancos);
+            
 
-            return View(bancos);
+           
         }
 
         // GET: bancos/Edit/5

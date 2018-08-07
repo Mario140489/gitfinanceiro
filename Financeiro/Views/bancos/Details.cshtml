@@ -1,25 +1,20 @@
 ﻿@model Financeiro.Models.bancos
+<div class="modal-header pigendo-secondary">
+    <h5 class="modal-title">Destalhes do banco</h5>
+    <button type="button" class="close" data-dismiss="modal">
+        <span class="fa fa-close" style="color:crimson"></span>
+    </button>
+</div>
+<div class="modal-body pigendo-primary">
+    <div style="color:black">
 
-@{
-    ViewBag.Title = "Details";
-}
+        <b>@Html.DisplayNameFor(model => model.descricao):</b>
+        @Html.DisplayFor(model => model.descricao)
 
-<div>
-    <h6>
-        Detalhes do Banco <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:crimson;">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </h6>
-
-    <hr class="corpadrao" />
-    <div style="font-size:small">
-        <div class="">
-            <b>@Html.DisplayNameFor(model => model.descricao):</b>
-            @Html.DisplayFor(model => model.descricao)
-        </div>
     </div>
 </div>
-<hr class="corpadrao" />
-<div align="right">
-    <a class="btn btn-outline-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span>Editar</a>
+<div class="modal-footer pigendo-secondary">
+    <div align="right">
+        <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","bancos",new { id = Model.bancos_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
+    </div>
 </div>

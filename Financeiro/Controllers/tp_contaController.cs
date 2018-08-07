@@ -34,7 +34,7 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tp_conta);
+            return PartialView(tp_conta);
         }
 
         // GET: tp_conta/Create
@@ -72,7 +72,7 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tp_conta);
+            return PartialView(tp_conta);
         }
 
         // POST: tp_conta/Edit/5
@@ -103,7 +103,7 @@ namespace Financeiro.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tp_conta);
+            return PartialView(tp_conta);
         }
 
         // POST: tp_conta/Delete/5
