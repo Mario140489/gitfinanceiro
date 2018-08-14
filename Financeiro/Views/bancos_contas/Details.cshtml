@@ -1,12 +1,12 @@
 ﻿@model Financeiro.Models.bancos_contas
-<div class="modal-header pigendo-secondary">
+<div class="modal-header">
     <h5 class="modal-title">Destalhes da conta</h5>
     <button type="button" class="close" data-dismiss="modal">
         <span class="fa fa-close" style="color:crimson"></span>
     </button>
 </div>
-<div class="modal-body pigendo-primary">
-    <div style="color:black">
+<div class="modal-body">
+    <div >
         <div class="">
             <b>@Html.DisplayNameFor(model => model.descricao):</b>
             @Html.DisplayFor(model => model.descricao)
@@ -57,7 +57,7 @@
         </div>
     </div>
 </div>
-<div class="modal-footer pigendo-secondary">
+<div class="modal-footer">
     <div align="right">
         <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = Model.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
     </div>

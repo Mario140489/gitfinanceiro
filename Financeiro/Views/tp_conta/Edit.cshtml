@@ -1,58 +1,42 @@
 ﻿@model Financeiro.Models.tp_conta
-
-<h2>Edit</h2>
-
-
+<div class="modal-header pigendo-secondary">
+    <h5 class="modal-title">Editar tipo de conta</h5>
+    <button type="button" class="close" data-dismiss="modal">
+        <span class="fa fa-close" style="color:crimson"></span>
+    </button>
+</div>
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>tp_conta</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.idtp_conta)
+    <div class="modal-body pigendo-primary">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.descricao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group espaco_form">
+            @Html.LabelFor(model => model.descricao, htmlAttributes: new { @class = "control-label col-md-12 col-form-label-sm" })
+            <div class="col-md-10 espaco_form">
+                @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholde = "Nome tipo de conta " } })
                 @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fundos, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.fundos)
-                    @Html.ValidationMessageFor(model => model.fundos, "", new { @class = "text-danger" })
-                </div>
+        <div class="form-group espaco_form">
+            @Html.LabelFor(model => model.fundos, htmlAttributes: new { @class = "control-label col-md-12 col-form-label-sm" })
+            <div class="col-md-10 espaco_form">
+                @Html.EditorFor(model => model.fundos)
+                @Html.ValidationMessageFor(model => model.fundos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group espaco_form">
+            @Html.LabelFor(model => model.investimento, htmlAttributes: new { @class = "control-label col-md-12 col-form-label-sm" })
+            <div class="col-md-10 espaco_form">
+                @Html.EditorFor(model => model.investimento)
+                @Html.ValidationMessageFor(model => model.investimento, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.investimento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.investimento)
-                    @Html.ValidationMessageFor(model => model.investimento, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <div class="modal-footer pigendo-secondary">
+        <button class="btn btn-sm btn-primary"><span class="fa fa-save"></span> Salvar</button>
+        <a class="btn btn-sm btn-danger" href="#" data-dismiss="modal"><span class="fa fa-sign-out"></span> Sair</a>
+    </div>
 }

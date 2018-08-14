@@ -14,7 +14,7 @@
     <div class="form-group espaco_form">
         @Html.LabelFor(model => model.descricao, htmlAttributes: new { @class = "control-label col-md-12 col-form-label-sm" })
         <div class="col-md-10 espaco_form">
-            @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+            @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control form-control-sm", @placeholde = "Nome tipo de conta " } })
             @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -32,7 +32,6 @@
             @Html.ValidationMessageFor(model => model.investimento, "", new { @class = "text-danger" })
         </div>
     </div>
-
 
 
 </div>

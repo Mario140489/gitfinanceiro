@@ -2,54 +2,68 @@
 @using PagedList;
 @using PagedList.Mvc;
 <h4><span class="fa fa-money"></span> Contas Bancarias</h4>
-<div class="row">
-    <div class="col-md-6 col-9">
-        @using (Ajax.BeginForm("Listar", "bancos_contas",
-            new AjaxOptions
-            {
-                HttpMethod = "GET",
-                InsertionMode = InsertionMode.Replace,
-                UpdateTargetId = "listaconta"
-            }
-            ))
-        {
-            <div class="form-inline m-1">
-                <div class="input-group row col-12 col-md-7"></div>
-                    <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome da conta">
-                    <div class="input-group-append">
-                        <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
+<div class="">
+    <div class="border border-dark p-0 col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-inline m-1">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome da conta">
+                            <div class="input-group-append">
+                                <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
+                            </div>
+                        </div>
+                        <div class="custom-control custom-checkbox m-1">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="ativo" @ViewBag.ativo>
+                            <label class="custom-control-label" for="customCheck1">ativo</label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="inativo" @ViewBag.inativo>
+                            <label class="custom-control-label" for="customCheck2">inativo</label>
+                        </div>
                     </div>
-                </div>
-                <div class="custom-control custom-checkbox m-1 custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1" name="ativo" @ViewBag.ativo>
-                    <label class="custom-control-label" for="customCheck1">ativo</label>
-                </div>
-                <div class="custom-control custom-checkbox m-1 custom-control-inline">
-                    <input type="checkbox" class="custom-control-input" id="customCheck2" name="inativo" @ViewBag.inativo>
-                    <label class="custom-control-label" for="customCheck2">inativo</label>
-                </div>
+                }
             </div>
-        }
 
+            <div align="right" class="col-md-2">
+                <form class="form-inline">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <a href="@Url.Action("Create","bancos_contas")" class="btn btn-sm btn-primary m-1"><span class="fa fa-plus"></span> Adicionar conta</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-           
-            <div class="col-md-6 text-right col-3">
-                <a href="@Url.Action("Create","bancos_contas")" class="btn btn-sm btn-primary m-1"><span class="fa fa-plus"></span> Adicionar conta</a>
-            </div>
-            <div class="col-md-12" id="listaconta">
-                @Html.Action("Listar")
-            </div>
-<div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+</div>
+<div class="border border-dark bg-light col-md-12">
+    @Html.Action("Listar")
+</div>
+<div class="border border-dark bg-light col-md-12">
+    <div class="row" style="font-size:small">
+        <div class="col-6 m-1 row">
+            @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, ViewBag.ativo, ViewBag.inativo }))
+        </div>
+        <div class="col-5 m-1" style="text-align:right">
+            Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) de @Model.PageCount
+        </div>
+    </div>
+</div>
+
+<div class="modal fade border border-dark" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content" id="teste">
-          
+
         </div>
     </div>
 </div>
 
 @section scripts{
     <script type="text/javascript">
-    $(document).ready(function () {
+        $(document).ready(function () {
 
             $('#btnsair').click(limpar);
             function limpar() {

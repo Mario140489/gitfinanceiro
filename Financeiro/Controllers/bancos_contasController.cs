@@ -22,8 +22,10 @@ namespace Financeiro.Controllers
         static string buscando;
         static string filtro;
         // GET: bancos_contas
-        public ActionResult Index(string ativo, string inativo)
+        public ActionResult Index(int? pagina, string Buscar, string ativo, string inativo)
         {
+            int paginatamanho = 10;
+            int paginaNumero = (pagina ?? 1);
             if (ativo is null && inativo is null)
             {
                 ViewBag.ativo = "checked";
@@ -62,9 +64,96 @@ namespace Financeiro.Controllers
             }
             // var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado== "N").OrderBy(b => b.bancos_contas_id);
             //var bc = bancos_contas.ToPagedList(pag ?? 1, 10);
-            return View();
+            if (Buscar is null && pagina is null)
+            {
+                var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.status == "A").OrderBy(b => b.bancos_contas_id);
+                return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+            }
+            else
+            {
+                if (Buscar is null && pagina >= 1)
+                {
+
+                    if (Buscar != null)
+                    {
+                        buscando = Buscar;
+                    }
+                    if (buscando == Buscar)
+                    {
+                        var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.status == filtro).OrderBy(b => b.bancos_contas_id);
+                        return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                    }
+                    if (ativo == "checked" && inativo == "checked")
+                    {
+                        if (Buscar == "")
+                        {
+                            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N").OrderBy(b => b.bancos_contas_id);
+                            return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                        }
+                        if (Buscar is null)
+                        {
+                            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N").OrderBy(b => b.bancos_contas_id);
+                            ViewBag.inativo = "checked";
+                            ViewBag.ativo = "checked";
+                            return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                        }
+                        else
+                        {
+                            paginaNumero = 1;
+                            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(buscando)).OrderBy(b => b.bancos_contas_id);
+                            return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                        }
+
+                    }
+                    else
+                    {
+                        var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(buscando) && b.status == filtro).OrderBy(b => b.bancos_contas_id);
+                        return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                    }
+                }
+                else
+                {
+                    if (filtro == "")
+                    {
+                        buscando = Buscar;
+                        paginaNumero = 1;
+                        var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(buscando)).OrderBy(b => b.bancos_contas_id);
+                        return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                    }
+                    else
+                    {
+                        if (ativo == "on" && inativo == "on")
+                        {
+                            if (pagina > 1 && buscando == "")
+                            {
+                                buscando = Buscar;
+                                var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N").OrderBy(b => b.bancos_contas_id);
+                                return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                            }
+                            else
+                            {
+                                buscando = Buscar;
+                                paginaNumero = 1;
+                                var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(buscando)).OrderBy(b => b.bancos_contas_id);
+                                return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                            }
+
+                        }
+                        else
+                        {
+                            buscando = Buscar;
+                            paginaNumero = 1;
+                            var bancos_contas = db.bancos_contas.Include(b => b.bancos).Include(b => b.tp_conta).Where(b => b.apagado == "N" && b.descricao.Contains(Buscar) && b.status == filtro).OrderBy(b => b.bancos_contas_id);
+                            return View( bancos_contas.ToPagedList(paginaNumero, paginatamanho));
+                        }
+                    }
+
+
+                }
+
+            }
         }
-        public PartialViewResult Listar(int? pagina, string Buscar, string ativo, string inativo)
+        public ActionResult Listar(int? pagina, string Buscar, string ativo, string inativo)
         {
             if (ativo is null && inativo is null)
             {
