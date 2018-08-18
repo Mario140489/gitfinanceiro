@@ -362,6 +362,7 @@
     <Content Include="Views\bancos_contas\Index.old.cshtml" />
     <Content Include="Views\tp_conta\Index.cshtml" />
     <Content Include="Views\bancos_contas\Index.cshtml" />
+    <Content Include="Views\bancos_contas\Create - Cópia .cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

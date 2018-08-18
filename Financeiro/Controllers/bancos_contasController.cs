@@ -304,7 +304,7 @@ namespace Financeiro.Controllers
         {
             ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao");
             ViewBag.idtp_conta = new SelectList(db.tp_conta, "idtp_conta", "descricao");
-            return View();
+            return PartialView();
         }
 
         // POST: bancos_contas/Create

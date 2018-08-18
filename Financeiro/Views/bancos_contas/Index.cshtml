@@ -1,8 +1,12 @@
 ﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
 @using PagedList;
 @using PagedList.Mvc;
-<h4><span class="fa fa-money"></span> Contas Bancarias</h4>
-<div class="">
+<div class="border border-dark p-0 col-md-12 corteste">
+    <div style="margin-left:4px; margin-bottom:-4px;">
+        <h4><span class="fa fa-money"></span> Contas Bancarias</h4>
+    </div>
+</div>
+<div class=" bg-light">
     <div class="border border-dark p-0 col-md-12">
         <div class="row">
             <div class="col-md-12">
@@ -31,7 +35,7 @@
                 <form class="form-inline">
                     <div class="input-group">
                         <div class="input-group-append">
-                            <a href="@Url.Action("Create","bancos_contas")" class="btn btn-sm btn-primary m-1"><span class="fa fa-plus"></span> Adicionar conta</a>
+                            <a href="#" class="btn btn-sm btn-primary m-1"id="adicionar"><span class="fa fa-plus"></span> Adicionar conta</a>
                         </div>
                     </div>
                 </form>
@@ -70,9 +74,9 @@
                 $('#teste2').html('');
             }
 
-            $(".btndetalhes").click(function () {
+            $("#adicionar").click(function () {
                 var id = $(this).data("value");
-                $("#teste").load("/bancos_contas/Details/" + id,
+                $("#teste").load("/bancos_contas/Create/",
                     function () {
                         $("#exampleModalCenter").modal("show");
                     }
