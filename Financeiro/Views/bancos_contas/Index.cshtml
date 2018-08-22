@@ -1,73 +1,74 @@
-﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
-@using PagedList;
-@using PagedList.Mvc;
-<div class="border border-dark p-0 col-md-12 corteste">
-    <div style="margin-left:4px; margin-bottom:-4px;">
-        <h4><span class="fa fa-money"></span> Contas Bancarias</h4>
+﻿@model IEnumerable<Financeiro.Models.bancos_contas>
+<div class="bg-light border">
+    <div class="col-md-12 ">
+        <p></p>
+            <h5 class="ali"><span class="fa fa-money"></span> Contas Bancarias</h5>
+            <hr />
+  
     </div>
-</div>
-<div class=" bg-light">
-    <div class="border border-dark p-0 col-md-12">
-        <div class="row">
-            <div class="col-md-12">
-                @using (Html.BeginForm())
-                {
-                    <div class="form-inline m-1">
-                        <div class="input-group">
-                            <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome da conta">
-                            <div class="input-group-append">
-                                <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
+    <div class=" bg-light">
+        <div class=" p-0 col-md-12">
+            <div class="">
+                <div class="col-md-12">
+                    @using (Ajax.BeginForm("Index", "Bancos_contas", new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "listaconta" }))
+                    {
+                        <div class="form-inline m-1">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome da conta">
+                                <div class="input-group-append">
+                                    <input type="submit" value="Pesquisar" class="btn btn-default btn-sm" />
+                                </div>
+                            </div>
+                            <div class="custom-control custom-checkbox m-1">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" name="ativo" checked>
+                                <label class="custom-control-label" for="customCheck1">ativo</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2" name="inativo">
+                                <label class="custom-control-label" for="customCheck2">inativo</label>
                             </div>
                         </div>
-                        <div class="custom-control custom-checkbox m-1">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" name="ativo" @ViewBag.ativo>
-                            <label class="custom-control-label" for="customCheck1">ativo</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck2" name="inativo" @ViewBag.inativo>
-                            <label class="custom-control-label" for="customCheck2">inativo</label>
-                        </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
 
-            <div align="right" class="col-md-2">
-                <form class="form-inline">
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <a href="#" class="btn btn-sm btn-primary m-1"id="adicionar"><span class="fa fa-plus"></span> Adicionar conta</a>
+                <div align="right" class="col-md-2">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <a href="#" class="btn btn-sm btn-success m-1" id="adicionar"><span class="fa fa-plus"></span> Adicionar</a>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="border border-dark bg-light col-md-12">
-    @Html.Action("Listar")
-</div>
-<div class="border border-dark bg-light col-md-12">
+    <div class=" bg-light col-md-12" id="listaconta">
+        <hr />
+        @Html.Partial("_Listar", Model)
+    </div>
     <div class="row" style="font-size:small">
         <div class="col-6 m-1 row">
-            @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, ViewBag.ativo, ViewBag.inativo }))
+
         </div>
         <div class="col-5 m-1" style="text-align:right">
-            Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) de @Model.PageCount
-        </div>
-    </div>
-</div>
-
-<div class="modal fade border border-dark" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content" id="teste">
 
         </div>
     </div>
-</div>
+    <div class="modal fade border border-dark" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" id="teste">
 
+            </div>
+        </div>
+    </div>
+</div>
 @section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
         $(document).ready(function () {
+
+
 
             $('#btnsair').click(limpar);
             function limpar() {

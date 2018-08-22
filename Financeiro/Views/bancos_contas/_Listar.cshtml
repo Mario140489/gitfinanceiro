@@ -1,61 +1,75 @@
-﻿@model PagedList.IPagedList<Financeiro.Models.bancos_contas>
-@using PagedList;
-@using PagedList.Mvc;
-<div  class="row table-responsive-md"style="font-size:small" id="">
-    <table class="table m-1  table-striped table-responsive-lg  fontpequena table-hover table-sm">
-        <tr class="thead-dark">
-            <th>
-                Descrição
-            </th>
-            <th>
-                Bancos
-            </th>
-            <th>
-                Tipo de Conta
-            </th>
-            <th>
-                Num. Conta
-            </th>
-            <th>
-                Agencia
-            </th>
-            <th>
-                Saldo
-            </th>
-            <th>
-            </th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.bancos.descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tp_conta.descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.conta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.agencia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.saldo)
-                </td>
-                <td align="right">
-                    <a class="btn btn-primary btn-sm" href="@Url.Action("Edit","bancos_contas",new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> Editar</a>
-                 
-                    <a href="#" class="btn btn-danger btn-sm btndelete" id="btndelete" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="escluir">
-                        <span class="fa fa-minus"></span> Excluir
-                    </a>
+﻿@model IEnumerable<Financeiro.Models.bancos_contas>
 
-                </td>
+
+<div class=" table-overflow table-responsive-md" style="font-size:small" id="">
+    <table class="table m-1 table-striped table-responsive-lg  fontpequena table-hover table-sm">
+        <thead>
+            <tr class="thead-dark ">
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Bancos
+                </th>
+                <th>
+                    Tipo de Conta
+                </th>
+                <th>
+                    Num. Conta
+                </th>
+                <th>
+                    Agencia
+                </th>
+                <th>
+                    Saldo
+                </th>
+                <th>
+                </th>
             </tr>
-        }
+        </thead>
+        <tbody class="table-overflow">
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bancos.descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tp_conta.descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.conta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.agencia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.saldo)
+                    </td>
+                    <td align="right">
+                        <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", "bancos_contas", new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> </a>
+
+                        <a href="#" class="btn btn-danger btn-sm btndelete" id="btndelete" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="excluir">
+                            <span class="fa fa-trash"></span>
+
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 
+</div>
+<div class="row" style="font-size:small">
+    <div class="col-6 m-1 row">
+
+    </div>
+    <div class="col-5 m-1" style="text-align:right">
+
+    </div>
 </div>
