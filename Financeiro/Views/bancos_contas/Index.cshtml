@@ -4,7 +4,6 @@
         <p></p>
             <h5 class="ali"><span class="fa fa-money"></span> Contas Bancarias</h5>
             <hr />
-  
     </div>
     <div class=" bg-light">
         <div class=" p-0 col-md-12">
@@ -16,7 +15,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome da conta">
                                 <div class="input-group-append">
-                                    <input type="submit" value="Pesquisar" class="btn btn-default btn-sm" />
+                                   <button type="submit" class="btn btn-primary btn-sm text-light" data-toggle="tooltip" data-placement="top" title="Pesquisar" ><span class="fa fa-search"></span></button>
                                 </div>
                             </div>
                             <div class="custom-control custom-checkbox m-1">
@@ -35,7 +34,7 @@
                     <form class="form-inline">
                         <div class="input-group">
                             <div class="input-group-append">
-                                <a href="#" class="btn btn-sm btn-success m-1" id="adicionar"><span class="fa fa-plus"></span> Adicionar</a>
+                                <a href="#" class="btn btn-sm btn-success m-1" id="adicionar" data-toggle="tooltip" data-placement="top" title="Adicionar"><span class="fa fa-plus"></span> Adicionar</a>
                             </div>
                         </div>
                     </form>
@@ -43,9 +42,11 @@
             </div>
         </div>
     </div>
-    <div class=" bg-light col-md-12" id="listaconta">
+    <div class=" bg-light col-md-12" id="">
         <hr />
-        @Html.Partial("_Listar", Model)
+        <div id="listaconta">
+            @Html.Partial("_Listar", Model)
+        </div>
     </div>
     <div class="row" style="font-size:small">
         <div class="col-6 m-1 row">
@@ -55,20 +56,32 @@
 
         </div>
     </div>
-    <div class="modal fade border border-dark" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" id="teste">
-
-            </div>
-        </div>
-    </div>
+    
 </div>
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
+   
+        function sucesso() {
+            $("#descricao").val('');
+            $("#conta").val('');
+            $("#agencia").val('');
+            $("#nib").val('');
+            $("#swift").val('');
+            $("#obs").val('');
+            $("#iban").val('');
+            $.ajax({
+                method: "get",
+                url: '/bancos_contas/Index',
+                InsertionMode: 'Replace',
+                data: $("#form0").serialize(),   
+            });
+        }
+        function falha() {
+            alert = "algum erro";
+        }
+
         $(document).ready(function () {
-
-
 
             $('#btnsair').click(limpar);
             function limpar() {
@@ -84,9 +97,19 @@
                 );
 
             });
+            
             $(".btndelete").click(function () {
                 var id = $(this).data("value");
                 $("#teste").load("/bancos_contas/Delete/" + id,
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+            $(".btneditar").click(function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos_contas/Edit/" + id,
                     function () {
                         $("#exampleModalCenter").modal("show");
                     }

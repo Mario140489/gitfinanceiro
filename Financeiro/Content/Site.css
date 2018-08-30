@@ -71,6 +71,36 @@ textarea {
     max-height: 350px;
     overflow-y: auto;
 }
-.ali{
 
+.pingendo-blue {
+ background-color:#007bff;
 }
+
+.pingendo-indigo {
+ background-color:#6610f2;
+}
+.pingendo-light {
+    background-color: #f3f3f3;
+}
+.pingendo-info {
+    background-color:#ccc;
+}
+.pigendo-
+--purple: #6f42c1;
+--pink: #e83e8c;
+--red: #dc3545;
+--orange: #fd7e14;
+--yellow: #ffc107;
+--green: #28a745;
+--teal: #20c997;
+--cyan: #17a2b8;
+--white: #fff;
+--gray: #6c757d;
+--gray-dark: #343a40;
+--primary: #12bbad;
+--secondary: #4f70ce;
+--success: #28a745;
+--info: #ccc;
+--warning: #ffc107;
+--danger: #dc3545;
+--dark: #151515;

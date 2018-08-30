@@ -6,7 +6,7 @@
 <hr />
 <p>
     <a class="btn btn-success btn-sm" href="@Url.Action("Create")"><span class="oi oi-plus" style="font-size:small"></span> Nova conta</a>
-    <a href="#" class="btn btn-success btnnovo btn-sm " id="btnnovo" data-toggle="tooltip" data-placement="top" title="Nova conta">
+    <a href="#" class="btn btn-success btnnovo btn-sm " id="btnnovo" data-toggle="tooltip" data-placement="top" title="Adicionar">
         <span class="oi oi-plus"></span>
     </a>
     <table class="table table-striped table-hover table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" data-backdrop="static" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" onclose="AtualizaGrid()" data-backdrop="static" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -85,6 +85,7 @@
     @section scripts{
         <script type="text/javascript">
             $(document).ready(function () {
+        
                 $(".btndetalhes").click(function () {
                     var id = $(this).data("value");
                     $("#teste").load("/bancos_contas/Details/" + id,
@@ -103,5 +104,9 @@
 
                 });
             });
+            function AtualizaGrid() {
+                load("@Url.Action("Index","bancos_contas")");
+            }
+
         </script>
     }

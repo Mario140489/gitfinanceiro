@@ -10,9 +10,16 @@
 
     <a style="text-align:center;color:black">Deseja realmente deletar essa conta?</a>
 </div>
-    <div class="modal-footer pigendo-secondary">
-        <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
-    </div>
+<div class="modal-footer pigendo-secondary">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+        </div>
+    }
+
+</div>
 
 

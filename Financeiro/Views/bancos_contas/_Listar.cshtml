@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<Financeiro.Models.bancos_contas>
 
 
-<div class=" table-overflow table-responsive-md" style="font-size:small" id="">
-    <table class="table m-1 table-striped table-responsive-lg  fontpequena table-hover table-sm">
+<div class="table-responsive-lg" id="" style="font-size:small">
+    <table class="table m-1 table-striped   fontpequena table-hover table-sm">
         <thead>
             <tr class="thead-dark ">
                 <th>
@@ -23,11 +23,12 @@
                 <th>
                     Saldo
                 </th>
-                <th>
+                <th align="center">
+                    <a>Operações</a>
                 </th>
             </tr>
         </thead>
-        <tbody class="table-overflow">
+        <tbody class="">
             @foreach (var item in Model)
             {
 
@@ -50,10 +51,13 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.saldo)
                     </td>
-                    <td align="right">
-                        <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", "bancos_contas", new { id = item.bancos_contas_id })" data-toggle="tooltip" data-placement="top" title="Editar"><span class="fa fa-pencil"></span> </a>
+                    <td align="center">
+                        <a href="#" class="btn btn-primary btn-sm btneditar" onclick="deletar()" id="btndelete" data-value="@item.bancos_contas_id " name="@item.bancos_contas_id" data-toggle="tooltip" data-placement="top" title="Editar">
+                            <span class="fa fa-pencil"></span>
 
-                        <a href="#" class="btn btn-danger btn-sm btndelete" id="btndelete" data-value="@item.bancos_contas_id " data-toggle="tooltip" data-placement="top" title="excluir">
+                        </a>
+
+                        <a href="#" class="btn btn-danger btn-sm btndelete" onclick="deletar()" id="btndelete" data-value="@item.bancos_contas_id " name="@item.bancos_contas_id" data-toggle="tooltip" data-placement="top" title="Excluir">
                             <span class="fa fa-trash"></span>
 
                         </a>
@@ -73,3 +77,39 @@
 
     </div>
 </div>
+<div class="modal fade border border-dark" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="teste">
+
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+
+        $(document).on("click", ".btndelete",
+            function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos_contas/Delete/" + id,
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            }
+        );
+        $(document).on("click", ".btneditar",
+            function () {
+                var id = $(this).data("value");
+                $("#teste").load("/bancos_contas/Edit/" + id,
+                    function () {
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            }
+        );
+
+        
+
+
+    </script>
