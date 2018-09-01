@@ -2,10 +2,10 @@
 <div class="bg-light border">
     <div class="col-md-12 ">
         <p></p>
-            <h5 class="ali"><span class="fa fa-money"></span> Contas Bancarias</h5>
+            <h5 class="ali "><span class="fa fa-money" style="color:forestgreen"></span> Contas Bancarias</h5>
             <hr />
     </div>
-    <div class=" bg-light">
+    <div class="bg-light">
         <div class=" p-0 col-md-12">
             <div class="">
                 <div class="col-md-12">
@@ -70,15 +70,26 @@
             $("#swift").val('');
             $("#obs").val('');
             $("#iban").val('');
+            $('.alert').alert();
             $.ajax({
                 method: "get",
                 url: '/bancos_contas/Index',
                 InsertionMode: 'Replace',
-                data: $("#form0").serialize(),   
+                Update: "listaconta",
+                mode:"replace",
+                data: $("#form0").serialize()   
             });
+        }
+        function completo() {
+            fexalerta();
         }
         function falha() {
             alert = "algum erro";
+        }
+        function fexalerta() {
+            setTimeout(function () {
+                $('.alert').alert('close');
+            }, 1000);
         }
 
         $(document).ready(function () {
@@ -89,9 +100,11 @@
             }
 
             $("#adicionar").click(function () {
+           
                 var id = $(this).data("value");
                 $("#teste").load("/bancos_contas/Create/",
                     function () {
+                        $('.alert').alert('close');
                         $("#exampleModalCenter").modal("show");
                     }
                 );
@@ -99,9 +112,11 @@
             });
             
             $(".btndelete").click(function () {
+                $('.alert').alert('close');
                 var id = $(this).data("value");
                 $("#teste").load("/bancos_contas/Delete/" + id,
                     function () {
+                        $('.alert').alert('close');
                         $("#exampleModalCenter").modal("show");
                     }
                 );
@@ -111,6 +126,7 @@
                 var id = $(this).data("value");
                 $("#teste").load("/bancos_contas/Edit/" + id,
                     function () {
+                        $('.alert').alert('close');
                         $("#exampleModalCenter").modal("show");
                     }
                 );

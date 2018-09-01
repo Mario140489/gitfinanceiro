@@ -80,12 +80,21 @@ textarea {
  background-color:#6610f2;
 }
 .pingendo-light {
-    background-color: #f3f3f3;
+    background-color:#f3f3f3;
 }
 .pingendo-info {
     background-color:#ccc;
 }
-.pigendo-
+.pigendo-primary {
+    background-color:#12bbad;
+}
+.pigendo-secundary {
+    background-color:#4f70ce;
+}
+.text-p-primary {
+    color: #12bbad;
+}
+
 --purple: #6f42c1;
 --pink: #e83e8c;
 --red: #dc3545;

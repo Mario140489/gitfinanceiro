@@ -1,21 +1,21 @@
 ﻿@model Financeiro.Models.bancos_contas
-<div class="modal-header pigendo-secondary">
-    <h5 class="modal-title">Deletar conta</h5>
+<div class="modal-header p-2">
+    <h5 class="modal-title m-1">Deletar conta</h5>
     <button type="button" class="close" data-dismiss="modal">
         <span class="fa fa-close" style="color:red"></span>
     </button>
 </div>
 
-<div class="modal-body pigendo-primary">
+<div class="modal-body ">
 
     <a style="text-align:center;color:black">Deseja realmente deletar essa conta?</a>
 </div>
-<div class="modal-footer pigendo-secondary">
+<div class="modal-footer p-2">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions m-1 no-color">
             <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
         </div>
     }

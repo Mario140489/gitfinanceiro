@@ -2,9 +2,9 @@
 
 
 <div class="table-responsive-lg" id="" style="font-size:small">
-    <table class="table m-1 table-striped   fontpequena table-hover table-sm">
+    <table class="table table-striped   fontpequena table-hover table-sm">
         <thead>
-            <tr class="thead-dark ">
+            <tr class="pigendo-secundary text-light ">
                 <th>
                     Descrição
                 </th>
@@ -102,6 +102,7 @@
                 var id = $(this).data("value");
                 $("#teste").load("/bancos_contas/Edit/" + id,
                     function () {
+                        $('.alert').alert('close');
                         $("#exampleModalCenter").modal("show");
                     }
                 );

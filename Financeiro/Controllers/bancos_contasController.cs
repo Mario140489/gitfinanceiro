@@ -149,6 +149,7 @@ namespace Financeiro.Controllers
 
             ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao", bancos_contas.bancos_id);
             ViewBag.idtp_conta = new SelectList(db.tp_conta, "idtp_conta", "descricao", bancos_contas.idtp_conta);
+            ViewBag.erro = "erro";
             return PartialView(bancos_contas);
         }
 

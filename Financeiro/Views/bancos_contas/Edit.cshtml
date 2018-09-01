@@ -1,13 +1,11 @@
 ﻿@model Financeiro.Models.bancos_contas
 <div id="Novaconta">
-    <div class="modal-header">
-        <h5 class="modal-title">Nova Conta</h5>
-        <button type="button" class="close" data-dismiss="modal">
-            <span class="fa fa-close" style="color:crimson"></span>
-        </button>
+    <div class="modal-header p-2">
+        <h5 class="modal-title m-1">Detalhes da conta</h5>
+        <a class="btn" style="color:red" href="@Url.Action("Index")"><span class="fa fa-close"></span></a>
     </div>
 
-    @using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "Salvo com Sucesso", HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "Novaconta" }))
+    @using (Ajax.BeginForm(new AjaxOptions { OnSuccess = "sucesso()", OnFailure = "falha() ", OnComplete = "completo()", HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "Novaconta" }))
     {
         @Html.AntiForgeryToken()
         <div class="modal-body">
@@ -15,7 +13,18 @@
                 <div class="form-group col-md-12 form-row">
                 
                     <div class="col-md-12 p-0">
-                        @Html.EditorFor(model => model.bancos_contas_id, new { htmlAttributes = new {@type="hidden", @class = "form-control form-control-sm col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12", @placeholder = "Nome da conta" } })
+                        <div class="col-sm-12  col-md-12 col-lg-12 col-12 col-xl-12">
+                            @if (ViewBag.erro == "erro")
+                            {
+                                <div class="alert  p-1 alert-warning" role="alert">
+                                    <label class="col-form-label col-form-label-sm  ">Operção não pode salvar.</label>
+                                </div>
+                            }
+                            <div class="alert p-1 alert-success" role="alert">
+                                <label class="col-form-label col-form-label-sm  ">Salvo com sucesso.</label>
+                            </div>
+                        </div>
+                        @Html.EditorFor(model => model.bancos_contas_id, new { htmlAttributes = new { @type = "hidden", @class = "form-control form-control-sm col-sm-12 col-12 col-md-12 col-lg-12 col-xl-12", @placeholder = "Nome da conta" } })
                         <label class="col-form-label col-form-label-sm  col-sm-10">Inativo</label>
                         <div class="col-sm-12">
                             <input class="form-check col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1" name="inativo" type="checkbox" id="inlineCheckbox2" @ViewBag.inativo>
@@ -96,8 +105,8 @@
                 </div>
             </div>
         </div>
-        <div class="modal-footer">
-            <div class="form-group col-12 text-right">
+        <div class="modal-footer p-2">
+            <div class="form-group col-12 m-1 text-right">
                 <div class="col-md-offset-2 col-md-12">
                     <button class="btn btn-sm btn-primary"><span class="fa fa-save"></span> Salvar</button>
                     <a class="btn btn-sm btn-danger" href="@Url.Action("Index")"><span class="fa fa-sign-out"></span> Sair</a>
