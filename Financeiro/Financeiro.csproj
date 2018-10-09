@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,36 +54,36 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.7.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.7.2\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.7.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.7.2\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.7.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.7.2\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.7.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    <Reference Include="Microsoft.AI.Web, Version=2.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.7.2\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.7.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.7.2\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.7.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.7.2\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.3\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.4\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.10.7\lib\net452\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.8\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.Entity.6.10.7\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.10.8\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -179,13 +179,19 @@
     <Compile Include="Controllers\bancos_contasController.cs" />
     <Compile Include="Controllers\bancos_contasControllerold.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\lancamentosController.cs" />
     <Compile Include="Controllers\layoutController.cs" />
+    <Compile Include="Controllers\pl_d_contasController.cs" />
+    <Compile Include="Controllers\tipo_pl_contasController.cs" />
     <Compile Include="Controllers\tp_contaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\bancos.cs" />
     <Compile Include="Models\bancos_contas.cs" />
+    <Compile Include="Models\lancamentos.cs" />
+    <Compile Include="Models\pl_d_contas.cs" />
+    <Compile Include="Models\tipo_pl_contas.cs" />
     <Compile Include="Models\tp_conta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -245,53 +251,35 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
-    <Content Include="Scripts\inputmask\bindings\inputmask.binding.min.js" />
-    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
-    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.min.js" />
-    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
-    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.min.js" />
-    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.js" />
-    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.min.js" />
-    <Content Include="Scripts\inputmask\global\document.js" />
-    <Content Include="Scripts\inputmask\global\document.min.js" />
-    <Content Include="Scripts\inputmask\global\window.js" />
-    <Content Include="Scripts\inputmask\global\window.min.js" />
-    <Content Include="Scripts\inputmask\inputmask.date.extensions.js" />
-    <Content Include="Scripts\inputmask\inputmask.date.extensions.min.js" />
-    <Content Include="Scripts\inputmask\inputmask.extensions.js" />
-    <Content Include="Scripts\inputmask\inputmask.extensions.min.js" />
-    <Content Include="Scripts\inputmask\inputmask.js" />
-    <Content Include="Scripts\inputmask\inputmask.min.js" />
-    <Content Include="Scripts\inputmask\inputmask.numeric.extensions.js" />
-    <Content Include="Scripts\inputmask\inputmask.numeric.extensions.min.js" />
-    <Content Include="Scripts\inputmask\inputmask.phone.extensions.js" />
-    <Content Include="Scripts\inputmask\inputmask.phone.extensions.min.js" />
-    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
-    <Content Include="Scripts\inputmask\jquery.inputmask.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-be.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-be.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-ca.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-ca.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-hu.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-hu.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-it.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-it.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-mx.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-mx.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-nl.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-nl.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-ru.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone-ru.min.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone.js" />
-    <Content Include="Scripts\inputmask\phone-codes\phone.min.js" />
+    <Content Include="Scripts\inputmask\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
+    <Content Include="Scripts\inputmask\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
+    <Content Include="Scripts\inputmask\inputmask\dependencyLibs\inputmask.dependencyLib.js" />
+    <Content Include="Scripts\inputmask\inputmask\global\document.js" />
+    <Content Include="Scripts\inputmask\inputmask\global\window.js" />
+    <Content Include="Scripts\inputmask\inputmask\inputmask.date.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask\inputmask.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.bundle.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\bindings\inputmask.binding.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\dependencyLibs\inputmask.dependencyLib.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\global\document.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\global\window.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\inputmask.date.extensions.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\inputmask.extensions.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\inputmask.numeric.extensions.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask\jquery.inputmask.min.js" />
+    <Content Include="Scripts\inputmask\min\jquery.inputmask.bundle.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.inputmask.bundle.js" />
-    <Content Include="Scripts\jquery.inputmask.bundle.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -364,6 +352,21 @@
     <Content Include="Views\bancos_contas\Index.cshtml" />
     <Content Include="Views\bancos_contas\Create - Cópia .cshtml" />
     <Content Include="Views\bancos_contas\Edit - Cópia .cshtml" />
+    <Content Include="Views\lancamentos\Create.cshtml" />
+    <Content Include="Views\lancamentos\Delete.cshtml" />
+    <Content Include="Views\lancamentos\Details.cshtml" />
+    <Content Include="Views\lancamentos\Edit.cshtml" />
+    <Content Include="Views\lancamentos\Index.cshtml" />
+    <Content Include="Views\pl_d_contas\Create.cshtml" />
+    <Content Include="Views\pl_d_contas\Delete.cshtml" />
+    <Content Include="Views\pl_d_contas\Details.cshtml" />
+    <Content Include="Views\pl_d_contas\Edit.cshtml" />
+    <Content Include="Views\pl_d_contas\Index.cshtml" />
+    <Content Include="Views\tipo_pl_contas\Create.cshtml" />
+    <Content Include="Views\tipo_pl_contas\Delete.cshtml" />
+    <Content Include="Views\tipo_pl_contas\Details.cshtml" />
+    <Content Include="Views\tipo_pl_contas\Edit.cshtml" />
+    <Content Include="Views\tipo_pl_contas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -413,8 +416,8 @@
     <PropertyGroup>
       <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.9.0\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

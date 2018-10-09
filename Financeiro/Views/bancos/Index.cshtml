@@ -3,31 +3,39 @@
 @using PagedList.Mvc;
 @using PagedList;
 @using PagedList.Mvc;
-<h4><span class="fa fa-money"></span> Bancos</h4>
-<div class="row">
-    <div class="col-md-6 col-9">
+<div class="col-12 bg-light border">
+    <div>
+        <p></p>
+        <h4 class=""><span class="fa fa-money"></span> Bancos</h4>
+        <hr />
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 col-9">
 
-        <form class="form-inline m-1">
-            <div class="input-group row col-12 col-md-7">
-                <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome do banco">
-                <div class="input-group-append">
-                    <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
+            <form class="form-inline m-1">
+                <div class="input-group row col-12 col-md-7">
+                    <input type="text" class="form-control form-control-sm" id="Buscar" name="Buscar" placeholder="Nome do banco">
+                    <div class="input-group-append">
+                        <input type="submit" value="Pesquisar" id="Pesquisar" class="btn btn-default btn-sm" />
+                    </div>
                 </div>
-            </div>
-           
-        </form>
 
-    </div>
-    <div class="col-md-6 text-right col-3">
-        <a href="#" class="btn btn-sm btn-primary btnnovo m-1"><span class="fa fa-plus"></span> Adicionar conta</a>
-    </div>
-    <div class="col-md-12">
-        @Html.Action("Listar")
-    </div>
-    <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content" id="teste">
-              
+            </form>
+
+        </div>
+        <div class="col-md-6 text-right col-3">
+            <a href="#" class="btn btn-sm btn-primary btnnovo m-1"><span class="fa fa-plus"></span> Adicionar conta</a>
+        </div>
+        <hr />
+        <div class="col-12">
+            @Html.Action("Listar")
+        </div>
+        <div class="modal fade" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" id="teste">
+
+                </div>
             </div>
         </div>
     </div>

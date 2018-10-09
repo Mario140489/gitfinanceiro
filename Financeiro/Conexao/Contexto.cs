@@ -26,5 +26,11 @@ namespace Financeiro.Conexao
         public System.Data.Entity.DbSet<Financeiro.Models.bancos_contas> bancos_contas { get; set; }
 
         public System.Data.Entity.DbSet<Financeiro.Models.tp_conta> tp_conta { get; set; }
+
+        public System.Data.Entity.DbSet<Financeiro.Models.lancamentos> lancamentos { get; set; }
+
+        public System.Data.Entity.DbSet<Financeiro.Models.pl_d_contas> pl_d_contas { get; set; }
+
+        public System.Data.Entity.DbSet<Financeiro.Models.tipo_pl_contas> tipo_pl_contas { get; set; }
     }
 }

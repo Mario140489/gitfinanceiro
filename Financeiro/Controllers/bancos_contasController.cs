@@ -20,7 +20,7 @@ namespace Financeiro.Controllers
     
         private Contexto db = new Contexto();
         static string buscando;
-        static string filtro;
+     
         // GET: bancos_contas
         public ActionResult Index(string Buscar, string ativo, string inativo, string op)
         {
@@ -133,6 +133,7 @@ namespace Financeiro.Controllers
             bancos_contas.apagado = "N";
             if (ModelState.IsValid)
             {
+                bancos_contas.dtcadastro = DateTime.Now;
                 db.bancos_contas.Add(bancos_contas);
                 await db.SaveChangesAsync();
                 ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao", bancos_contas.bancos_id);
@@ -194,7 +195,9 @@ namespace Financeiro.Controllers
             bancos_contas.apagado = "N";
             if (ModelState.IsValid)
             {
-
+                bancos_contas.dtalteracao = DateTime.Now;
+                ViewBag.bancos_id = new SelectList(db.bancos, "bancos_id", "descricao", bancos_contas.bancos_id);
+                ViewBag.idtp_conta = new SelectList(db.tp_conta, "idtp_conta", "descricao", bancos_contas.idtp_conta);
                 db.Entry(bancos_contas).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return PartialView();

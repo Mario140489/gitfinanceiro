@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Financeiro.Models.bancos_contas>
-<div class="bg-light border">
+<div class="bg-light border ">
     <div class="col-md-12 ">
         <p></p>
             <h5 class="ali "><span class="fa fa-money" style="color:forestgreen"></span> Contas Bancarias</h5>
@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class=" bg-light col-md-12" id="">
+    <div class=" bg-light col-md-12 " id="">
         <hr />
         <div id="listaconta">
             @Html.Partial("_Listar", Model)
@@ -55,8 +55,7 @@
         <div class="col-5 m-1" style="text-align:right">
 
         </div>
-    </div>
-    
+    </div> 
 </div>
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")

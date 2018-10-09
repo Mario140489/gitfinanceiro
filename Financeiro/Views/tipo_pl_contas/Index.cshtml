@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Financeiro.Models.tipo_pl_contas>
+<table class="table table-sm table-hover">
+    <thead class="pigendo-secundary text-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.descricao)
+            </th>
+            <th style="text-align:right"> operações</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td align="right">
+                <a href="#" class="btn btn-primary btn-sm btneditar2" onclick="deletar()" id="btndelete" data-value="@item.pl_d_contas_idpl_d_contas " name="@item.pl_d_contas_idpl_d_contas" data-toggle="tooltip" data-placement="top" title="Editar">
+                    <span class="fa fa-pencil"></span>
+
+                </a>
+
+                <a href="#" class="btn btn-danger btn-sm btndelete2" onclick="deletar()" id="btndelete" data-value="@item.pl_d_contas_idpl_d_contas " name="@item.pl_d_contas_idpl_d_contas" data-toggle="tooltip" data-placement="top" title="Excluir">
+                    <span class="fa fa-trash"></span>
+
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+<script type="text/javascript">
+
+    $(document).on("click", ".btndelete2",
+        function () {
+            var id = $(this).data("value");
+            $("#teste").load("/tipo_pl_contas/Delete/" + id,
+                function () {
+                    $("#exampleModalCenter").modal("show");
+                }
+            );
+
+        }
+    );
+    $(document).on("click2", ".btneditar",
+        function () {
+            var id = $(this).data("value");
+            $("#teste").load("/tipo_pl_contas/Edit/" + id,
+                function () {
+                    $('.alert').alert('close');
+                    $("#exampleModalCenter").modal("show");
+                }
+            );
+
+        }
+    );
+
+
+
+
+</script>

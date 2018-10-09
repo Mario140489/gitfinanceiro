@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Financeiro.Models.lancamentos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.debito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cedito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ok)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.divs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.his)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.au)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_vencimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_entarda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_emissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.obs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_cadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_alteracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_conta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.debito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cedito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.saldo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ok)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.divs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.his)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.au)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_vencimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_entarda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_emissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.obs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_cadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_alteracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_conta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idlancamentos }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idlancamentos }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idlancamentos })
+        </td>
+    </tr>
+}
+
+</table>

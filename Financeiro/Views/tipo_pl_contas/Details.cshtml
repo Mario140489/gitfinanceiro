@@ -1,0 +1,35 @@
+﻿@model Financeiro.Models.tipo_pl_contas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tipo_pl_contas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pl_d_contas_idpl_d_contas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pl_d_contas_idpl_d_contas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idtipo_pl_contas }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

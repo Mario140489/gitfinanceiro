@@ -1,0 +1,174 @@
+﻿@model IEnumerable<Financeiro.Models.pl_d_contas>
+
+@{
+    ViewBag.Title = "Plano de Contas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-12 border bg-light" style="height:100%;">
+    <p></p>
+    <h5>Plano de contas </h5>
+    <hr />
+    <p>
+        <a href="#" class="btn btn-sm btn-success" id="adicionar" data-toggle="tooltip" data-placement="top" title="Adicionar"><span class="fa fa-plus"></span> Adicionar</a>
+    </p>
+    <hr />
+    <div class="row">
+        <div class="col-12 col-xl-6 col-sm-12 col-md-6 col-lg-6 border-right">
+            <table class="table table-sm table-hover">
+                <thead class="pigendo-secundary text-light">
+                    <tr class="selc">
+                        <th>
+                            @Html.DisplayNameFor(model => model.planoContas)
+                        </th>
+                        <th style="text-align:right"> Operações</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                <tr class="trnovo" data-value="@item.idpl_d_contas ">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.planoContas)
+                    </td>
+                    <td align="right">
+                    <a href="#" class="btn btn-sm btn-success btnadicionar " id="" data-toggle="tooltip" data-placement="top" title="Adicionar"><span class="fa fa-plus"></span> </a>
+                    <a href="#" class="btn btn-primary btn-sm btneditar" onclick="deletar()" id="btndelete" data-value="@item.idpl_d_contas " name="@item.idpl_d_contas" data-toggle="tooltip" data-placement="top" title="Editar">
+                        <span class="fa fa-pencil"></span>
+
+                    </a>
+
+                    <a href="#" class="btn btn-danger btn-sm btndelete" onclick="deletar()" id="btndelete" data-value="@item.idpl_d_contas " name="@item.idpl_d_contas" data-toggle="tooltip" data-placement="top" title="Excluir">
+                        <span class="fa fa-trash"></span>
+
+                    </a>
+                    </td>
+                </tr>
+                }
+
+            </table>
+            <p></p>
+        </div>
+        <div  id="vivivi" class="col-12 col-xl-6 col-sm-12 col-md-6 col-lg-6">
+        
+        </div>
+    </div>
+</div>
+<div class="modal fade border border-dark" data-backdrop="static" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="teste">
+
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        function sucesso() {
+            $("#descricao").val('');
+            $("#conta").val('');
+            $("#agencia").val('');
+            $("#nib").val('');
+            $("#swift").val('');
+            $("#obs").val('');
+            $("#iban").val('');
+            $('.alert').alert();
+            $.ajax({
+                method: "get",
+                url: '/bancos_contas/Index',
+                Update: "listaconta",
+                mode: "replace",
+                data: $("#form0").serialize()
+            });
+        }
+        function completo() {
+            fexalerta();
+        }
+        function falha() {
+            alert = "algum erro";
+        }
+        function fexalerta() {
+            setTimeout(function () {
+                $('.alert').alert('close');
+            }, 1000);
+        }
+        $(document).on("click", ".trnovo",
+            function () {
+                var id = $(this).data("value");
+                $("#vivivi").load("/tipo_pl_contas/Index/" + id,
+                    function () {
+                   
+                    }
+                );
+
+            }
+        );
+  
+
+        function ativo() {
+            $(this).addClass('selecionado');
+        }
+        $(document).ready(function () {
+
+            $('#btnsair').click(limpar);
+            function limpar() {
+                $('#teste2').html('');
+            }
+
+            $("#adicionar").click(function () {
+
+                var id = $(this).data("value");
+                $("#teste").load("/pl_d_contas/Create/",
+                    function () {
+                        $('.alert').alert('close');
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+
+            $(".btnadicionar").click(function () {
+
+                var id = $(this).data("value");
+                $("#teste").load("/tipo_pl_contas/Create/",
+                    function () {
+                        $('.alert').alert('close');
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+            $(".btndelete").click(function () {
+              
+                var id = $(this).data("value");
+                $("#teste").load("/pl_d_contas/Delete/" + id,
+                    function () {
+                        $('.alert').alert('close');
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+            $(".btneditar").click(function () {
+                var id = $(this).data("value");
+                $("#teste").load("/pl_d_contas/Edit/" + id,
+                    function () {
+                        $('.alert').alert('close');
+                        $("#exampleModalCenter").modal("show");
+                    }
+                );
+
+            });
+          
+
+
+            //$(".btnnovo").click(function () {
+            // $("#teste2").load("",
+            // function () {
+            //  $("#exampleModalCenter").modal("show");
+            // }
+            // );
+
+            //});
+
+        });</script>
+}

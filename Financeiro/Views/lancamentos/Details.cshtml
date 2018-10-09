@@ -1,0 +1,163 @@
+﻿@model Financeiro.Models.lancamentos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lancamentos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.debito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.debito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cedito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cedito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.saldo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.divs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.divs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.his)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.his)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.au)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.au)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_vencimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_vencimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_entarda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_entarda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_emissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_emissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.obs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.obs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_cadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_cadastro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_alteracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_alteracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_conta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_conta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idlancamentos }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -94,6 +94,9 @@ textarea {
 .text-p-primary {
     color: #12bbad;
 }
+.selecionado {
+    font-weight: bold;
+}
 
 --purple: #6f42c1;
 --pink: #e83e8c;
